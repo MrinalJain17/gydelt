@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(name='gydelt',
       version='1.0',
-      description='Collect, clean, pre-process and store data from GDELT easily',
+      description='Wrapper to collect, clean, pre-process and store data from GDELT',
       url='',
       author='Mrinal Jain',
       author_email='mrinaljain007@gmail.com',
