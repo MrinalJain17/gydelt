@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>gydelt &#8212; gydelt 1.0 documentation</title>
+    <title>Welcome to gydelt &#8212; gydelt 1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,8 +26,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="GetData" href="gydelt.html" />
-    <link rel="prev" title="Welcome to gydelt" href="README.html" /> 
+    <link rel="next" title="gydelt" href="modules.html" />
+    <link rel="prev" title="Welcome to gydelt’s documentation!" href="index.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -37,10 +37,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="gydelt.html" title="GetData"
+          <a href="modules.html" title="gydelt"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="README.html" title="Welcome to gydelt"
+          <a href="index.html" title="Welcome to gydelt’s documentation!"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">gydelt 1.0 documentation</a> &#187;</li> 
       </ul>
@@ -51,12 +51,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="gydelt">
-<h1>gydelt<a class="headerlink" href="#gydelt" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gydelt.html">GetData</a></li>
+  <div class="section" id="welcome-to-gydelt">
+<span id="welcome-to-gydelt"></span><h1>Welcome to gydelt<a class="headerlink" href="#welcome-to-gydelt" title="Permalink to this headline">¶</a></h1>
+<p>It&#8217;s pretty complicated to get data from GDELT. Not only accessing the data but preprocessing the data is also a tedious task. <strong>&#8216;gydelt&#8217;</strong>  is a wrapper that can be used to access and perform the basic preprocessing operations on the data obtained from GDELT.</p>
+<hr class="docutils" />
+<div class="section" id="why-use-gydelt">
+<span id="why-use-gydelt"></span><h2>Why use gydelt?<a class="headerlink" href="#why-use-gydelt" title="Permalink to this headline">¶</a></h2>
+<p>The user can:</p>
+<ol class="simple">
+<li>Collect the data -<ul>
+<li>by reading from a file (obtained from the GKG Exporter).</li>
+<li>by querying the GDELT&#8217;s GKG table hosted on BigQuery.</li>
 </ul>
+</li>
+<li>Pre-process the collected data: The data collected needs to be cleaned and processed before it can be used for analysis. The package has several functions to do the job.</li>
+<li>Storage of the data.</li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="installation">
+<span id="installation"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p class="first">Download the wheel file (gydelt-1.0-py2.py3-none-any.whl)</p>
+</li>
+<li><p class="first">Run the command  -</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">gydelt</span><span class="o">-</span><span class="mf">1.0</span><span class="o">-</span><span class="n">py2</span><span class="o">.</span><span class="n">py3</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="nb">any</span><span class="o">.</span><span class="n">whl</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<blockquote>
+<div><strong>Requirements</strong>
+You need Python (2.x or 3.x) to run gydelt (Python 3.x is recommended).
+Also, if you want to query the data from Google&#8217;s BigQuery, proper authentication will be required in order to do the job.</div></blockquote>
 </div>
 </div>
 
@@ -66,16 +93,25 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to gydelt</a><ul>
+<li><a class="reference internal" href="#why-use-gydelt">Why use gydelt?</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="README.html"
-                        title="previous chapter">Welcome to gydelt</a></p>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to gydelt&#8217;s documentation!</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="gydelt.html"
-                        title="next chapter">GetData</a></p>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter">gydelt</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/modules.rst.txt"
+      <li><a href="_sources/README.md.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -100,10 +136,10 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="gydelt.html" title="GetData"
+          <a href="modules.html" title="gydelt"
              >next</a> |</li>
         <li class="right" >
-          <a href="README.html" title="Welcome to gydelt"
+          <a href="index.html" title="Welcome to gydelt’s documentation!"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">gydelt 1.0 documentation</a> &#187;</li> 
       </ul>
