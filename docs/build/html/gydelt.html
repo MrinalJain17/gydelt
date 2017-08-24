@@ -212,6 +212,183 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 </dd></dl>
 
 </div>
+<div class="section" id="processdata">
+<h1>ProcessData<a class="headerlink" href="#processdata" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="gydelt.gydelt.ProcessData">
+<em class="property">class </em><code class="descclassname">gydelt.gydelt.</code><code class="descname">ProcessData</code><span class="sig-paren">(</span><em>data_frame</em>, <em>location='Locations'</em>, <em>person='Persons'</em>, <em>organization='Organizations'</em>, <em>tone='ToneData'</em>, <em>theme='Themes'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains wrappers to pre-process various fields of the data collected from GDELT</p>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.check_country_list">
+<code class="descname">check_country_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.check_country_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns those Locations (countries) which were not present in the countries list</p>
+<dl class="docutils">
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">list</span></code></dt>
+<dd>A list containing the locations for which there was no match in the default country list</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.clean_locations">
+<code class="descname">clean_locations</code><span class="sig-paren">(</span><em>only_country=True</em>, <em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_locations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre-process the &#8216;Locations&#8217; column of the data (Extract either all details available, or just the Countries)</p>
+<dl class="docutils">
+<dt><strong>Parameters :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">only_country</span> <span class="pre">(boolean)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">True</span></code></dt>
+<dd><p class="first">If True, will keep only the country names for each row in the <code class="docutils literal"><span class="pre">Locations</span></code> column</p>
+<p class="last">If False, will keep whatever details available (city, state or country)</p>
+</dd>
+<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dd>A pandas DataFrame (with additional fields for <code class="docutils literal"><span class="pre">Countries</span></code> and <code class="docutils literal"><span class="pre">States</span></code>, if required)</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.clean_organizations">
+<code class="descname">clean_organizations</code><span class="sig-paren">(</span><em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_organizations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre-processes the <code class="docutils literal"><span class="pre">Organizations</span></code> column. Removes certain invalid Organizations</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Some Countries (eg. United States) have been mistaken as individual Organizations</p>
+<p class="last">This function removes those Organizations (which are actually Countries), from each record/row</p>
+</div>
+<dl class="docutils">
+<dt><strong>Parameters :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dd>A pandas DataFrame (with updated <code class="docutils literal"><span class="pre">Organizations</span></code>)</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.clean_persons">
+<code class="descname">clean_persons</code><span class="sig-paren">(</span><em>fillna='unknown'</em>, <em>max_no_of_words=6</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_persons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out the <code class="docutils literal"><span class="pre">Persons</span></code> column of the data.</p>
+<p>Only those names are kept in which the no. of words are within a certain limit</p>
+<dl class="docutils">
+<dt><strong>Parameters :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt><code class="docutils literal"><span class="pre">max_no_of_words</span> <span class="pre">(int)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">6</span></code></dt>
+<dd>Removes all the names whose length is greater than this value from each record/row</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dd>A pandas DataFrame (with updated &#8216;Persons&#8217;)</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.clean_themes">
+<code class="descname">clean_themes</code><span class="sig-paren">(</span><em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_themes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) in the <code class="docutils literal"><span class="pre">Themes</span></code> column of data</p>
+<dl class="docutils">
+<dt><strong>Parameters :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dd>A pandas DataFrame (with Null values in <code class="docutils literal"><span class="pre">Themes</span></code> filled)</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.flat_column">
+<code class="descname">flat_column</code><span class="sig-paren">(</span><em>columns=[]</em>, <em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.flat_column" title="Permalink to this definition">¶</a></dt>
+<dd><p>The given list of columns are flattened (using one-hot encoding) and the resulting columns are added to the DataFrame</p>
+<dl class="docutils">
+<dt><strong>Parameters :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dd><p class="first">A pandas DataFrame</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p>All the column names passed in the list <code class="docutils literal"><span class="pre">columns</span></code> are flattened (one-hot encoding is used).</p>
+<p class="last">The new data frame returned contains additional columns, which are the individual and unique values present in the respective columns which are required to be flattened.</p>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.pre_process">
+<code class="descname">pre_process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.pre_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper functions that does all the pre-processig. (Except - flattening)</p>
+<dl class="docutils">
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dd>A clean and processed pandas DataFrame</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.seperate_tones">
+<code class="descname">seperate_tones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.seperate_tones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates Separate columns for each value in <code class="docutils literal"><span class="pre">ToneData</span></code></p>
+<dl class="docutils">
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dd><p class="first">A pandas DataFrame</p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ToneData</span></code> column has 7 vaules, which are converted into seperate columns in the data frame.
+The original <code class="docutils literal"><span class="pre">ToneData</span></code> remains intact</p>
+</div>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 
 
           </div>
@@ -219,6 +396,12 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">GetData</a></li>
+<li><a class="reference internal" href="#processdata">ProcessData</a></li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="modules.html"
                         title="previous chapter">gydelt</a></p>

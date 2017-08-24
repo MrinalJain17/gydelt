@@ -11,6 +11,8 @@ import string
 import os
 from datetime import datetime
 from google.cloud import bigquery
+from time import time
+
 
 class GetData(object):
 
@@ -152,7 +154,7 @@ class GetData(object):
 		if (is_search_criteria):
 			if(len(search_dict) != 0):
 				is_console_input = False
-			query = query + _create_query(console_input=is_console_input, search_dict=search_dict)
+			query = query + self._create_query(console_input=is_console_input, search_dict=search_dict)
 		else:
 			query = query + 'True'
 			
@@ -161,9 +163,9 @@ class GetData(object):
 			
 		if get_stats == True:
 			if auth_file != '':
-				message = _get_query_stats(query=query, is_auth_file=True, auth_file=auth_file)
+				message = self._get_query_stats(query=query, is_auth_file=True, auth_file=auth_file)
 			else:
-				message = _get_query_stats(query=query, is_auth_file=False)
+				message = self._get_query_stats(query=query, is_auth_file=False)
 			proceed = input(message + '\nProceed ?(Y/N)\n')
 			
 		if proceed == 'Y' or proceed == 'y' or get_stats == False:
@@ -215,7 +217,7 @@ class GetData(object):
 		data_frame.to_csv(path, sep=seperator, index=index)
 		print('Success: Data frame saved as - {}'.format(path))
 	
-	def _get_query_stats(query, is_auth_file, auth_file=''):
+	def _get_query_stats(self, query, is_auth_file, auth_file=''):
 	
 		""" To show the amount of data a query will process
 		
@@ -232,7 +234,7 @@ class GetData(object):
 			proceed = '\nNo stats available since the \'auth_file\' is not provided.'
 		return proceed
 	
-	def _create_query(console_input, search_dict):
+	def _create_query(self, console_input, search_dict):
 
 		"""Converts the search criteria into an SQL Query
 		
@@ -318,3 +320,610 @@ class GetData(object):
 				
 		return condition
 		
+class ProcessData(object):
+	
+	""" Contains wrappers to pre-process various fields of the data collected from GDELT """
+	
+	countries = [
+		('US', 'United States'),
+		('AF', 'Afghanistan'),
+		('AL', 'Albania'),
+		('DZ', 'Algeria'),
+		('AS', 'American Samoa'),
+		('AD', 'Andorra'),
+		('AO', 'Angola'),
+		('AI', 'Anguilla'),
+		('AQ', 'Antarctica'),
+		('AG', 'Antigua And Barbuda'),
+		('AR', 'Argentina'),
+		('AM', 'Armenia'),
+		('AW', 'Aruba'),
+		('AU', 'Australia'),
+		('AT', 'Austria'),
+		('AZ', 'Azerbaijan'),
+		('BS', 'Bahamas'),
+		('BH', 'Bahrain'),
+		('BD', 'Bangladesh'),
+		('BB', 'Barbados'),
+		('BY', 'Belarus'),
+		('BE', 'Belgium'),
+		('BZ', 'Belize'),
+		('BJ', 'Benin'),
+		('BM', 'Bermuda'),
+		('BT', 'Bhutan'),
+		('BO', 'Bolivia'),
+		('BA', 'Bosnia And Herzegowina'),
+		('BW', 'Botswana'),
+		('BV', 'Bouvet Island'),
+		('BR', 'Brazil'),
+		('BN', 'Brunei Darussalam'),
+		('BG', 'Bulgaria'),
+		('BF', 'Burkina Faso'),
+		('BI', 'Burundi'),
+		('KH', 'Cambodia'),
+		('CM', 'Cameroon'),
+		('CA', 'Canada'),
+		('CV', 'Cape Verde'),
+		('KY', 'Cayman Islands'),
+		('CF', 'Central African Rep'),
+		('TD', 'Chad'),
+		('CL', 'Chile'),
+		('CN', 'China'),
+		('CX', 'Christmas Island'),
+		('CC', 'Cocos Islands'),
+		('CO', 'Colombia'),
+		('KM', 'Comoros'),
+		('CG', 'Congo'),
+		('CK', 'Cook Islands'),
+		('CR', 'Costa Rica'),
+		('CI', 'Cote D`ivoire'),
+		('HR', 'Croatia'),
+		('CU', 'Cuba'),
+		('CY', 'Cyprus'),
+		('CZ', 'Czech Republic'),
+		('DK', 'Denmark'),
+		('DJ', 'Djibouti'),
+		('DM', 'Dominica'),
+		('DO', 'Dominican Republic'),
+		('TP', 'East Timor'),
+		('EC', 'Ecuador'),
+		('EG', 'Egypt'),
+		('SV', 'El Salvador'),
+		('GQ', 'Equatorial Guinea'),
+		('ER', 'Eritrea'),
+		('EE', 'Estonia'),
+		('ET', 'Ethiopia'),
+		('FK', 'Falkland Islands (Malvinas)'),
+		('FO', 'Faroe Islands'),
+		('FJ', 'Fiji'),
+		('FI', 'Finland'),
+		('FR', 'France'),
+		('GF', 'French Guiana'),
+		('PF', 'French Polynesia'),
+		('TF', 'French S. Territories'),
+		('GA', 'Gabon'),
+		('GM', 'Gambia'),
+		('GE', 'Georgia'),
+		('DE', 'Germany'),
+		('GH', 'Ghana'),
+		('GI', 'Gibraltar'),
+		('GR', 'Greece'),
+		('GL', 'Greenland'),
+		('GD', 'Grenada'),
+		('GP', 'Guadeloupe'),
+		('GU', 'Guam'),
+		('GT', 'Guatemala'),
+		('GN', 'Guinea'),
+		('GW', 'Guinea-bissau'),
+		('GY', 'Guyana'),
+		('HT', 'Haiti'),
+		('HN', 'Honduras'),
+		('HK', 'Hong Kong'),
+		('HU', 'Hungary'),
+		('IS', 'Iceland'),
+		('IN', 'India'),
+		('ID', 'Indonesia'),
+		('IR', 'Iran'),
+		('IQ', 'Iraq'),
+		('EI', 'Ireland'),
+		('IL', 'Israel'),
+		('IT', 'Italy'),
+		('JM', 'Jamaica'),
+		('JP', 'Japan'),
+		('JO', 'Jordan'),
+		('KZ', 'Kazakhstan'),
+		('KE', 'Kenya'),
+		('KI', 'Kiribati'),
+		('KP', 'North Korea'),
+		('KR', 'South Korea'),
+		('KW', 'Kuwait'),
+		('KG', 'Kyrgyzstan'),
+		('LA', 'Laos'),
+		('LV', 'Latvia'),
+		('LB', 'Lebanon'),
+		('LS', 'Lesotho'),
+		('LR', 'Liberia'),
+		('LY', 'Libya'),
+		('LI', 'Liechtenstein'),
+		('LT', 'Lithuania'),
+		('LU', 'Luxembourg'),
+		('MO', 'Macau'),
+		('MK', 'Macedonia'),
+		('MG', 'Madagascar'),
+		('MW', 'Malawi'),
+		('MY', 'Malaysia'),
+		('MV', 'Maldives'),
+		('ML', 'Mali'),
+		('MT', 'Malta'),
+		('MH', 'Marshall Islands'),
+		('MQ', 'Martinique'),
+		('MR', 'Mauritania'),
+		('MU', 'Mauritius'),
+		('YT', 'Mayotte'),
+		('MX', 'Mexico'),
+		('FM', 'Micronesia'),
+		('MD', 'Moldova'),
+		('MC', 'Monaco'),
+		('MN', 'Mongolia'),
+		('MS', 'Montserrat'),
+		('MA', 'Morocco'),
+		('MZ', 'Mozambique'),
+		('MM', 'Myanmar'),
+		('NA', 'Namibia'),
+		('NR', 'Nauru'),
+		('NP', 'Nepal'),
+		('NL', 'Netherlands'),
+		('AN', 'Netherlands Antilles'),
+		('NC', 'New Caledonia'),
+		('NZ', 'New Zealand'),
+		('NI', 'Nicaragua'),
+		('NE', 'Niger'),
+		('NG', 'Nigeria'),
+		('NU', 'Niue'),
+		('NF', 'Norfolk Island'),
+		('MP', 'Northern Mariana Islands'),
+		('NO', 'Norway'),
+		('OM', 'Oman'),
+		('PK', 'Pakistan'),
+		('PW', 'Palau'),
+		('PA', 'Panama'),
+		('PG', 'Papua New Guinea'),
+		('PY', 'Paraguay'),
+		('PE', 'Peru'),
+		('PH', 'Philippines'),
+		('PN', 'Pitcairn'),
+		('PL', 'Poland'),
+		('PT', 'Portugal'),
+		('PR', 'Puerto Rico'),
+		('QA', 'Qatar'),
+		('RE', 'Reunion'),
+		('RO', 'Romania'),
+		('RS', 'Russia'),
+		('RW', 'Rwanda'),
+		('KN', 'Saint Kitts And Nevis'),
+		('LC', 'Saint Lucia'),
+		('VC', 'St Vincent/Grenadines'),
+		('WS', 'Samoa'),
+		('SM', 'San Marino'),
+		('ST', 'Sao Tome'),
+		('SA', 'Saudi Arabia'),
+		('SN', 'Senegal'),
+		('SC', 'Seychelles'),
+		('SL', 'Sierra Leone'),
+		('SG', 'Singapore'),
+		('SK', 'Slovakia'),
+		('SI', 'Slovenia'),
+		('SB', 'Solomon Islands'),
+		('SO', 'Somalia'),
+		('ZA', 'South Africa'),
+		('ES', 'Spain'),
+		('LK', 'Sri Lanka'),
+		('SH', 'St. Helena'),
+		('PM', 'St.Pierre'),
+		('SD', 'Sudan'),
+		('SR', 'Suriname'),
+		('SZ', 'Swaziland'),
+		('SE', 'Sweden'),
+		('CH', 'Switzerland'),
+		('SY', 'Syria'),
+		('TW', 'Taiwan'),
+		('TJ', 'Tajikistan'),
+		('TZ', 'Tanzania'),
+		('TH', 'Thailand'),
+		('TG', 'Togo'),
+		('TK', 'Tokelau'),
+		('TO', 'Tonga'),
+		('TT', 'Trinidad And Tobago'),
+		('TN', 'Tunisia'),
+		('TR', 'Turkey'),
+		('TM', 'Turkmenistan'),
+		('TV', 'Tuvalu'),
+		('UG', 'Uganda'),
+		('UA', 'Ukraine'),
+		('AE', 'United Arab Emirates'),
+		('UK', 'United Kingdom'),
+		('UY', 'Uruguay'),
+		('UZ', 'Uzbekistan'),
+		('VU', 'Vanuatu'),
+		('VA', 'Vatican City State'),
+		('VE', 'Venezuela'),
+		('VN', 'Vietnam'),
+		('VG', 'Virgin Islands (British)'),
+		('VI', 'Virgin Islands (U.S.)'),
+		('EH', 'Western Sahara'),
+		('YE', 'Yemen'),
+		('YU', 'Yugoslavia'),
+		('ZR', 'Zaire'),
+		('ZM', 'Zambia'),
+		('ZW', 'Zimbabwe')
+	]
+	
+	US_states = [
+		('AK', 'Alaska'),
+		('AL', 'Alabama'),
+		('AR', 'Arkansas'),
+		('AS', 'American Samoa'),
+		('AZ', 'Arizona'),
+		('CA', 'California'),
+		('CO', 'Colorado'),
+		('CT', 'Connecticut'),
+		('DC', 'District of Columbia'),
+		('DE', 'Delaware'),
+		('FL', 'Florida'),
+		('GA', 'Georgia'),
+		('GU', 'Guam'),
+		('HI', 'Hawaii'),
+		('IA', 'Iowa'),
+		('ID', 'Idaho'),
+		('IL', 'Illinois'),
+		('IN', 'Indiana'),
+		('KS', 'Kansas'),
+		('KY', 'Kentucky'),
+		('LA', 'Louisiana'),
+		('MA', 'Massachusetts'),
+		('MD', 'Maryland'),
+		('ME', 'Maine'),
+		('MI', 'Michigan'),
+		('MN', 'Minnesota'),
+		('MO', 'Missouri'),
+		('MP', 'Northern Mariana Islands'),
+		('MS', 'Mississippi'),
+		('MT', 'Montana'),
+		('NA', 'National'),
+		('NC', 'North Carolina'),
+		('ND', 'North Dakota'),
+		('NE', 'Nebraska'),
+		('NH', 'New Hampshire'),
+		('NJ', 'New Jersey'),
+		('NM', 'New Mexico'),
+		('NV', 'Nevada'),
+		('NY', 'New York'),
+		('OH', 'Ohio'),
+		('OK', 'Oklahoma'),
+		('OR', 'Oregon'),
+		('PA', 'Pennsylvania'),
+		('PR', 'Puerto Rico'),
+		('RI', 'Rhode Island'),
+		('SC', 'South Carolina'),
+		('SD', 'South Dakota'),
+		('TN', 'Tennessee'),
+		('TX', 'Texas'),
+		('UT', 'Utah'),
+		('VA', 'Virginia'),
+		('VI', 'Virgin Islands'),
+		('VT', 'Vermont'),
+		('WA', 'Washington'),
+		('WI', 'Wisconsin'),
+		('WV', 'West Virginia'),
+		('WY', 'Wyoming')
+	]
+	
+	def __init__(self, data_frame, location='Locations', person='Persons', organization='Organizations', tone='ToneData', theme='Themes'):
+		
+		""" Constructor of the class ``ProcessData``
+		
+		**Parameters :**
+			``data_frame (pandas.DataFrame) :``
+				The DataFrame obtained from GDELT, which is to be processed.
+			``location (str) : default 'Locations'``
+				The name of the field in the passed DataFrame that corresponds to ``Locations``
+			``person (str) : default 'Persons'``
+				The name of the field in the passed DataFrame that corresponds to ``Persons``
+			``organization (str) : default 'Organizations'``
+				The name of the field in the passed DataFrame that corresponds to ``Organizations``
+			``tone (str) : default 'ToneData'``
+				The name of the field in the passed DataFrame that corresponds to ``ToneData``
+			``theme(str) : default 'Themes'``
+				The name of the field in the passed DataFrame that corresponds to ``Themes``	
+		"""
+		
+		self.data_frame = data_frame
+		self.location = location
+		self.person = person
+		self.organization = organization
+		self.tone = tone
+		self.theme = theme
+	
+	def check_country_list(self):
+
+		""" Returns those Locations (countries) which were not present in the countries list
+
+		**Returns :**
+			``list``
+				A list containing the locations for which there was no match in the default country list
+		"""
+
+		missing = []
+		loc = ''
+		for locations in self.data_frame[self.location]:
+			count = 0
+			location = locations.split(';')
+			for c in self.countries:
+				for loc in location:
+					if (c[1] in loc):
+						count = 1
+			if (count == 0):
+				missing.append(loc)
+		return missing
+		
+	def clean_locations(self, only_country=True, fillna='unknown'):
+
+		""" Pre-process the 'Locations' column of the data (Extract either all details available, or just the Countries)
+		
+		**Parameters :**
+			``only_country (boolean) : default True``
+				If True, will keep only the country names for each row in the ``Locations`` column
+						
+				If False, will keep whatever details available (city, state or country)
+			``fillna (str) : default 'unknown'``
+				To fill the Null values (``NaN``) with the specified value
+
+		**Returns :**
+			``pandas.DataFrame``
+				A pandas DataFrame (with additional fields for ``Countries`` and ``States``, if required)
+		"""
+
+		self.data_frame[self.location].fillna(fillna, inplace=True)
+		if 'Countries' not in list(self.data_frame.columns):
+			self.data_frame.loc[:,'Countries'] = self.data_frame[self.location].apply(lambda x: self._process_locations(row=x))
+		if only_country:
+			pass
+		else:
+			self.data_frame.loc[:,'States'] = self.data_frame[self.location].apply(lambda x: self._process_locations_states(row=x))
+		return self.data_frame
+		
+	def clean_persons(self, fillna='unknown', max_no_of_words=6):
+
+		""" Filters out the ``Persons`` column of the data.
+				
+		Only those names are kept in which the no. of words are within a certain limit
+				
+		**Parameters :**
+			``fillna (str) : default 'unknown'``
+				To fill the Null values (``NaN``) with the specified value
+			``max_no_of_words (int) : default 6``
+				Removes all the names whose length is greater than this value from each record/row
+					
+		**Returns :**
+			``pandas.DataFrame``
+				A pandas DataFrame (with updated 'Persons')
+		"""
+
+		self.data_frame[self.person].fillna(fillna, inplace=True)
+		self.data_frame.loc[:,self.person] = self.data_frame[self.person].apply(lambda x: self._process_persons(x, max_words=max_no_of_words))
+		return self.data_frame
+		
+	def clean_organizations(self, fillna='unknown'):
+
+		""" Pre-processes the ``Organizations`` column. Removes certain invalid Organizations
+		
+		.. note::
+			Some Countries (eg. United States) have been mistaken as individual Organizations
+			
+			This function removes those Organizations (which are actually Countries), from each record/row
+		
+		**Parameters :**
+			``fillna (str) : default 'unknown'``
+				To fill the Null values (``NaN``) with the specified value
+			
+		**Returns :**
+			``pandas.DataFrame``
+				A pandas DataFrame (with updated ``Organizations``)
+		"""
+
+		self.data_frame[self.organization].fillna(fillna, inplace=True)
+		self.data_frame.loc[:,self.organization] = self.data_frame[self.organization].apply(lambda x: self._process_organizations(x))
+		self.data_frame[self.organization].fillna(fillna, inplace=True)      # If after processing the Organizations, a NaN value is created
+		return self.data_frame
+		
+	def seperate_tones(self):
+		
+		""" Creates Separate columns for each value in ``ToneData``
+		
+		**Returns :**
+			``pandas.DataFrame``
+				A pandas DataFrame
+						
+				.. note::
+					The ``ToneData`` column has 7 vaules, which are converted into seperate columns in the data frame.
+					The original ``ToneData`` remains intact
+		"""
+		
+		seperate = ['Tone', 'Positive Score', 'Negative Score', 'Polarity', 'Activity Reference Density', 'Self/Group Reference Density', 'Word Count']
+		for i in range(len(seperate)):
+			try:
+				self.data_frame.loc[:,seperate[i]] = self.data_frame[self.tone].apply(lambda x: float('{:.15f}'.format(float(x.split(',')[i]))))
+			except IndexError:
+				self.data_frame.loc[:,seperate[i]] = None
+		return self.data_frame
+		
+	def clean_themes(self, fillna='unknown'):
+	
+		""" Fills the Null values (``NaN``) in the ``Themes`` column of data
+		
+		**Parameters :**
+			``fillna (str) : default 'unknown'``
+				To fill the Null values (``NaN``) with the specified value
+			
+		**Returns :**
+			``pandas.DataFrame``
+				A pandas DataFrame (with Null values in ``Themes`` filled)
+		"""
+		
+		self.data_frame[self.theme].fillna(fillna, inplace=True)
+		return self.data_frame
+		
+	def flat_column(self, columns=[], fillna='unknown'):
+
+		""" The given list of columns are flattened (using one-hot encoding) and the resulting columns are added to the DataFrame
+		
+		**Parameters :**
+			``fillna (str) : default 'unknown'``
+				To fill the Null values (``NaN``) with the specified value
+					
+		**Returns :**
+			``pandas.DataFrame``
+				A pandas DataFrame
+				
+				.. note::
+					All the column names passed in the list ``columns`` are flattened (one-hot encoding is used).
+
+					The new data frame returned contains additional columns, which are the individual and unique values present in the respective columns which are required to be flattened.
+		"""
+		
+		start_time = time()
+		
+		if len(columns) == 0:
+			print('No columns passed to flatten !')
+			return self.data_frame
+		else:
+			for column in columns:
+				self.data_frame[column].fillna(fillna, inplace=True)
+				values = []
+				for i in self.data_frame[column]:
+					values.extend(i.split(';'))
+
+				values = list(set(values))
+				if '' in values:
+					values.remove('')
+				values.sort()
+				
+				for i in values:
+					self.data_frame.loc[:,i] = self.data_frame[column].apply(lambda x: self._one_hot_encode(x, i))
+				
+			end_time = time()
+			print('\nTime taken for flattening the column(s) --> {:.2f} seconds'.format(end_time - start_time))
+			
+			return self.data_frame
+	
+	def pre_process(self):
+		
+		""" A wrapper functions that does all the pre-processig. (Except - flattening)
+			
+		**Returns :**
+			``pandas.DataFrame``
+				A clean and processed pandas DataFrame
+		"""
+		
+		start_time = time()
+		
+		to_clean = list(self.data_frame.columns)
+		if self.location in to_clean:
+			self.data_frame = self.clean_locations()
+		if self.person in to_clean:
+			self.data_frame = self.clean_persons()
+		if self.organization in to_clean:
+			self.data_frame = self.clean_organizations()
+		if self.tone in to_clean:
+			self.data_frame = self.seperate_tones()
+		if self.theme in to_clean:
+			self.data_frame = self.clean_themes()
+			
+		end_time = time()
+		print('\nTime taken for pre-processing the data --> {:.2f} seconds'.format(end_time - start_time))
+		
+		return self.data_frame
+		
+	def _process_persons(self, row, max_words):
+
+		""" Returns only those names having a no. of words below a certain limit
+		
+		.. note::
+			Used Internally
+		"""
+		
+		names = row.split(';')
+		finalNames = []
+		for name in names:
+			if (len(name.split(' ')) <= max_words):
+				finalNames.append(name)
+		return ';'.join(finalNames)
+
+
+	def _process_locations(self, row):
+
+		""" Returns the Names of Countries from each row (delimited by semi-colon)
+		
+		.. note::
+			Used Internally
+		"""
+
+		temp = row.split(';')
+		cleanList = []
+		for c in self.countries:
+			for t in temp:
+				if (c[1] in t):
+					cleanList.append(c[1])               # This will only extract the Country name
+		return ';'.join(set(cleanList))
+		
+		
+	def _process_locations_states(self, row):
+
+		""" Returns the States (of the US) from each row, if present (delimited by semi-colon)
+		
+		.. note::
+			Used Internally
+		"""
+		
+		temp = row.split(';')
+		stateList = []
+		for t in temp:
+			if 'United States' in t:
+				for state in self.US_states:
+					if state[1] in t:
+						stateList.append(state[1])
+		if len(stateList) == 0:
+			return 'unknown'
+		return ';'.join(set(stateList))
+
+
+	def _process_organizations(self, row):
+
+		""" Removes those organizations which have the exact same name as a country
+		
+		.. note::
+			Used Internally
+		"""
+
+		organizations = row.split(';')
+		organizations = [org.lower() for org in organizations]
+		for country in self.countries:
+			if country[1].lower() in organizations:
+				organizations.remove(country[1].lower())
+		return ';'.join(organizations)
+
+
+	def _one_hot_encode(self, row, val):
+
+		""" Used for One-Hot Encoding
+		
+		Checks if the value passed is present in the current row.
+		
+		If Yes, then the value of that particular column, for that row is 1
+		
+		.. note::
+			Used Internally
+		"""
+
+		if val in row.split(';'):
+			return 1
