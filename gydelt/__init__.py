@@ -1,2 +1,1 @@
-from . import SearchGdelt
-from . import CleanGdelt
+from . import gydelt
