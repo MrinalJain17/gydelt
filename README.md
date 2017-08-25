@@ -2,6 +2,8 @@ Welcome to gydelt
 ===============
 It's pretty complicated to get data from GDELT. Not only accessing the data but preprocessing the data is also a tedious task. **'gydelt'**  is a wrapper that can be used to access and perform the basic preprocessing operations on the data obtained from GDELT.
 
+[View Full Documentation of gydelt](http://gydelt.readthedocs.io/en/latest/)
+
 
 ----------
 
