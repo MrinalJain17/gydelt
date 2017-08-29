@@ -1,52 +1,163 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>GetData &#8212; gydelt 1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="gydelt" href="modules.html" /> 
-  </head>
-  <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="modules.html" title="gydelt"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">gydelt 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">gydelt</a> &#187;</li> 
-      </ul>
-    </div>  
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>GetData &mdash; gydelt 1.0 documentation</title>
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="gydelt 1.0 documentation" href="index.html"/>
+        <link rel="up" title="gydelt" href="modules.html"/>
+        <link rel="prev" title="gydelt" href="modules.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gydelt
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Welcome to gydelt</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#why-use-gydelt">Why use gydelt?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">gydelt</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GetData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processdata">ProcessData</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gydelt</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">gydelt</a> &raquo;</li>
+        
+      <li>GetData</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/gydelt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="getdata">
 <h1>GetData<a class="headerlink" href="#getdata" title="Permalink to this headline">¶</a></h1>
@@ -55,40 +166,70 @@
 <em class="property">class </em><code class="descclassname">gydelt.gydelt.</code><code class="descname">GetData</code><a class="headerlink" href="#gydelt.gydelt.GetData" title="Permalink to this definition">¶</a></dt>
 <dd><p>For collecting and storing the data</p>
 <dl class="method">
+<dt id="gydelt.gydelt.GetData.read_from_file">
+<code class="descname">read_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>seperator='\t'</em>, <em>parse_dates=False</em>, <em>encoding=None</em>, <em>header=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.GetData.read_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from a saved file into a pandas DataFrame</p>
+<dl class="docutils">
+<dt><strong>Parameters :</strong></dt>
+<dd><dl class="first last docutils">
+<dt>path (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">(required)</span></code></span><dd>Path of the file to be read (<strong>Do not forget</strong> to add the file extension)</dd>
+<dt>separator (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span><dd>Delimiter to use</dd>
+<dt>parse_dates (list)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>eg - [&#8216;Date&#8217;] -&gt; This column is parsed as a single Date column</dd>
+<dt>encoding (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd>Encoding to use for UTF when reading/writing (eg - <code class="docutils literal"><span class="pre">'ISO-8859-1'</span></code>)</dd>
+<dt>header (int)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">0</span></code></span><dd><p class="first">Determines what row in the data should be considered for the Heading (Column names)</p>
+<p class="last">If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&#8217; (without the quotes)</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt>pandas.DataFrame</dt>
+<dd>A pandas DataFrame</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="gydelt.gydelt.GetData.fire_query">
 <code class="descname">fire_query</code><span class="sig-paren">(</span><em>project_id, fields_required=['DATE', 'Themes', 'Locations', 'Persons', 'Organizations', 'V2Tone'], is_search_criteria=False, get_stats=True, auth_file='', search_dict={}, limit=None, save_data=True</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.GetData.fire_query" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fire a query on Google&#8217;s BigQuery according to your search criteria and get the data in a pandas DataFrame</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
-<dd><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">project_id</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">(required)</span></code></dt>
-<dd>The ID of the project created on Google BigQuery, with which the query is to be executed</dd>
-<dt><code class="docutils literal"><span class="pre">fields_required</span> <span class="pre">(list)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">['DATE',</span> <span class="pre">'Themes',</span> <span class="pre">'Locations',</span> <span class="pre">'Persons',</span> <span class="pre">'Organizations',</span> <span class="pre">'V2Tone']</span></code></dt>
-<dd>The names of the columns to be extracted from the GKG Table on BigQuery</dd>
-<dt><code class="docutils literal"><span class="pre">is_search_criteria</span> <span class="pre">(boolean)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">False</span></code></dt>
-<dd>If True, then the user has to specify the Search Criteria (either through the console or by passing a dictionary)</dd>
-<dt><code class="docutils literal"><span class="pre">get_stats</span> <span class="pre">(boolean)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">True</span></code></dt>
-<dd>If True, then the amount of data that is to be processed will be displayed before executing the query (only if the location of &#8216;auth_file&#8217; is given)</dd>
-<dt><code class="docutils literal"><span class="pre">auth_file</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">''</span> <span class="pre">(empty)</span></code></dt>
-<dd><p class="first">The path of the authorization file received from BigQuery.</p>
+<dd><dl class="first last docutils">
+<dt>project_id (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">(required)</span></code></span><dd>The ID of the project created on Google BigQuery, with which the query is to be executed</dd>
+<dt>fields_required (list)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">['DATE',</span> <span class="pre">'Themes',</span> <span class="pre">'Locations',</span> <span class="pre">'Persons',</span> <span class="pre">'Organizations',</span> <span class="pre">'V2Tone']</span></code></span><dd>The names of the columns to be extracted from the GKG Table on BigQuery</dd>
+<dt>is_search_criteria (boolean)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>If True, then the user has to specify the Search Criteria (either through the console or by passing a dictionary)</dd>
+<dt>get_stats (boolean)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span><dd>If True, then the amount of data that is to be processed will be displayed before executing the query (only if the location of &#8216;auth_file&#8217; is given)</dd>
+<dt>auth_file (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">''</span> <span class="pre">(empty)</span></code></span><dd><p class="first">The path of the authorization file received from BigQuery.</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If the path of authorization file is provided, stats will be displayed before executing the query. If not, a message will be displayed and the user will be asked whether or not to proceeds</p>
 </div>
 </dd>
-<dt><code class="docutils literal"><span class="pre">search_dict</span> <span class="pre">(dict)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">{}</span> <span class="pre">(empty)</span></code>     </dt>
-<dd><dl class="first docutils">
+<dt>search_dict (dict)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">{}</span> <span class="pre">(empty)</span></code>     </span><dd><dl class="first docutils">
 <dt>Contains the Search Criteria in the following format - </dt>
 <dd>Keys - Column from the GKG table, where the search is to be performed
 Values - The keywords that are needed to be searched in the specific fields/columns</dd>
 <dt>The values are divided into 3 parts - </dt>
-<dd><p class="first">Part 1 - similar to &#8216;Include ALL of&#8217; (boolean &#8216;and&#8217; is applied for each keyword)</p>
-<p>Part 2 - similar to &#8216;Include ATLEAST ONE of&#8217; (boolean &#8216;or&#8217; is applied for each keyword)</p>
-<p class="last">Part 3 - similar to &#8216;Must NOT have ANY of&#8217; (boolean &#8216;not&#8217; is applied for each keyword)</p>
+<dd><p class="first">Part 1 - similar to <code class="docutils literal"><span class="pre">'Include</span> <span class="pre">ALL</span> <span class="pre">of'</span></code> (boolean <code class="docutils literal"><span class="pre">'and'</span></code> is applied for each keyword)</p>
+<p>Part 2 - similar to <code class="docutils literal"><span class="pre">'Include</span> <span class="pre">ATLEAST</span> <span class="pre">ONE</span> <span class="pre">of'</span></code> (boolean <code class="docutils literal"><span class="pre">'or'</span></code> is applied for each keyword)</p>
+<p class="last">Part 3 - similar to <code class="docutils literal"><span class="pre">'Must</span> <span class="pre">NOT</span> <span class="pre">have</span> <span class="pre">ANY</span> <span class="pre">of'</span></code> (boolean <code class="docutils literal"><span class="pre">'not'</span></code> is applied for each keyword)</p>
 </dd>
 </dl>
-<p>Delimiter for the 3 parts is semi colon (;)</p>
-<p>Delimiter for keywords within each part is comma (,)</p>
+<p>Delimiter for the 3 parts is semi colon</p>
+<p>Delimiter for keywords within each part is comma</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If No keywords is to be added in a certain part, leave it empty (BUT, DO NOT miss the semicolons)</p>
@@ -100,9 +241,9 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p><code class="docutils literal"><span class="pre">The</span> <span class="pre">format</span> <span class="pre">while</span> <span class="pre">taking</span> <span class="pre">the</span> <span class="pre">input</span> <span class="pre">via</span> <span class="pre">console</span> <span class="pre">is</span> <span class="pre">also</span> <span class="pre">the</span> <span class="pre">same.</span></code></p>
-<p class="last"><code class="docutils literal"><span class="pre">First,</span> <span class="pre">enter</span> <span class="pre">the</span> <span class="pre">required</span> <span class="pre">fields/columns</span> <span class="pre">(delimited</span> <span class="pre">by</span> <span class="pre">semicolon(;))</span></code>
-<code class="docutils literal"><span class="pre">Then,</span> <span class="pre">for</span> <span class="pre">each</span> <span class="pre">field,</span> <span class="pre">enter</span> <span class="pre">the</span> <span class="pre">Keywords</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">format</span> <span class="pre">as</span> <span class="pre">mentioned</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">search_dict</span></code></p>
+<p>The format while taking the input via console is also the same.</p>
+<p>First, enter the required fields/columns (delimited by semi colon)</p>
+<p class="last">Then, for each field, enter the Keywords in the same format as mentioned for the search_dict</p>
 </div>
 <p>Example</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Enter</span> <span class="n">the</span> <span class="n">Field</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">:</span> <span class="n">Persons</span><span class="p">;</span><span class="n">Organizations</span>
@@ -113,62 +254,31 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">NONE</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Persons</span><span class="p">:</span> <span class="n">donald</span> <span class="n">trump</span>
 </pre></div>
 </div>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">ALL</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span><span class="p">:</span> <span class="n">google</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">ALL</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span><span class="p">:</span> <span class="n">google</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">ATLEAST</span> <span class="n">ONE</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span><span class="p">:</span> <span class="n">allen</span> <span class="n">institute</span> <span class="k">for</span> <span class="n">artificial</span> <span class="n">intelligence</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">NONE</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span> <span class="p">:</span> 
 </pre></div>
 </div>
-</dd>
-</dl>
-<div class="admonition note">
+<div class="last admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If a dictionary is passed, it is <strong>case-sensitive</strong>. Therefore, give the values in the proper casing.</p>
 </div>
-<dl class="last docutils">
-<dt><code class="docutils literal"><span class="pre">limit</span> <span class="pre">(int)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">None</span></code></dt>
-<dd><p class="first">The Maximum no. of rows to be returned from the result obtained by the Query.</p>
+</dd>
+<dt>limit (int)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd><p class="first">The Maximum no. of rows to be returned from the result obtained by the Query.</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
 <p>The max. size of the result is 128 MB.</p>
 <p class="last">If your query generates the data that exceeds 128 MB, you will need to specify the limit.</p>
 </div>
 </dd>
-<dt><code class="docutils literal"><span class="pre">save_data</span> <span class="pre">(boolean)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">True</span></code></dt>
-<dd>Will save the data in the current working directory</dd>
+<dt>save_data (boolean)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span><dd>Will save the data in the current working directory</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
-<dd>A pandas DataFrame</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="gydelt.gydelt.GetData.read_from_file">
-<code class="descname">read_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>seperator='\t'</em>, <em>parse_dates=False</em>, <em>encoding=None</em>, <em>header=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.GetData.read_from_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Read data from a saved file into a pandas DataFrame</p>
-<dl class="docutils">
-<dt><strong>Parameters :</strong></dt>
-<dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">path</span> <span class="pre">(str)</span> <span class="pre">:</span></code></dt>
-<dd>Path of the file to be read (<strong>Do not forget</strong> to add the file extension)</dd>
-<dt><code class="docutils literal"><span class="pre">separator</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'</span>&#160;&#160; <span class="pre">'</span></code></dt>
-<dd>Delimiter to use</dd>
-<dt><code class="docutils literal"><span class="pre">parse_dates</span> <span class="pre">(list)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">False</span></code></dt>
-<dd>eg - [&#8216;Date&#8217;] -&gt; This column is parsed as a single Date column</dd>
-<dt><code class="docutils literal"><span class="pre">encoding</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">None</span></code></dt>
-<dd>Encoding to use for UTF when reading/writing (eg - &#8216;ISO-8859-1&#8217;)</dd>
-<dt><code class="docutils literal"><span class="pre">header</span> <span class="pre">(int)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">0</span></code></dt>
-<dd>Determines what row in the data should be considered for the Heading (Column names)
-If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&#8217; (without the quotes)</dd>
-</dl>
-</dd>
-<dt><strong>Returns :</strong></dt>
-<dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dt>pandas.DataFrame</dt>
 <dd>A pandas DataFrame</dd>
 </dl>
 </dd>
@@ -182,27 +292,27 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">data_frame</span> <span class="pre">(pandas.DataFrame)</span> <span class="pre">:</span></code></dt>
+<dt>data_frame (pandas.DataFrame) :</dt>
 <dd>The DataFrame that needs to be stored (in the specified format)</dd>
-<dt><code class="docutils literal"><span class="pre">path</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">None</span></code></dt>
-<dd><p class="first">The path at which the file is to be stored</p>
+<dt>path (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd><p class="first">The path at which the file is to be stored</p>
 <p>It should be of the following format - <code class="docutils literal"><span class="pre">&lt;dir&gt;/&lt;sub-dir&gt;/.../&lt;filename.csv&gt;</span></code> (recommended)</p>
 <p>Mention the file name in the path itself (along with the extension)</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
 <p>If no path is provided, the data frame will be saved in the current working directory.</p>
-<p class="last">Format of file name - &#8216;<code class="docutils literal"><span class="pre">Result(YYYY-MM-DD</span> <span class="pre">HH.MM.SS).csv</span></code>&#8216; (without quotes)</p>
+<p class="last">Format of file name - <code class="docutils literal"><span class="pre">Result(YYYY-MM-DD</span> <span class="pre">HH.MM.SS).csv</span></code></p>
 </div>
 </dd>
-<dt><code class="docutils literal"><span class="pre">separator</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'</span>&#160;&#160; <span class="pre">'</span></code></dt>
-<dd>Delimiter to use</dd>
-<dt><code class="docutils literal"><span class="pre">index</span> <span class="pre">(boolean)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">False</span></code></dt>
-<dd>If True, then the index of the DataFrame will also be stored in the file</dd>
+<dt>separator (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span><dd>Delimiter to use</dd>
+<dt>index (boolean)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>If True, then the index of the DataFrame will also be stored in the file</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">None</span></code></dt>
+<dt>None</dt>
 <dd>A success message, along with the full path of the file.</dd>
 </dl>
 </dd>
@@ -225,7 +335,7 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 <dl class="docutils">
 <dt><strong>Returns :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">list</span></code></dt>
+<dt>list</dt>
 <dd>A list containing the locations for which there was no match in the default country list</dd>
 </dl>
 </dd>
@@ -239,18 +349,41 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">only_country</span> <span class="pre">(boolean)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">True</span></code></dt>
-<dd><p class="first">If True, will keep only the country names for each row in the <code class="docutils literal"><span class="pre">Locations</span></code> column</p>
+<dt>only_country (boolean)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span><dd><p class="first">If True, will keep only the country names for each row in the <code class="docutils literal"><span class="pre">Locations</span></code> column</p>
 <p class="last">If False, will keep whatever details available (city, state or country)</p>
 </dd>
-<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
-<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dt>pandas.DataFrame</dt>
 <dd>A pandas DataFrame (with additional fields for <code class="docutils literal"><span class="pre">Countries</span></code> and <code class="docutils literal"><span class="pre">States</span></code>, if required)</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="gydelt.gydelt.ProcessData.clean_persons">
+<code class="descname">clean_persons</code><span class="sig-paren">(</span><em>fillna='unknown'</em>, <em>max_no_of_words=6</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_persons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out the <code class="docutils literal"><span class="pre">Persons</span></code> column of the data.</p>
+<p>Only those names are kept in which the no. of words are within a certain limit</p>
+<dl class="docutils">
+<dt><strong>Parameters :</strong></dt>
+<dd><dl class="first last docutils">
+<dt>fillna (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>max_no_of_words (int)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">6</span></code></span><dd>Removes all the names whose length is greater than this value from each record/row</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt>pandas.DataFrame</dt>
+<dd>A pandas DataFrame (with updated <code class="docutils literal"><span class="pre">'Persons'</span></code>)</dd>
 </dl>
 </dd>
 </dl>
@@ -268,13 +401,13 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
-<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dt>pandas.DataFrame</dt>
 <dd>A pandas DataFrame (with updated <code class="docutils literal"><span class="pre">Organizations</span></code>)</dd>
 </dl>
 </dd>
@@ -282,24 +415,20 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 </dd></dl>
 
 <dl class="method">
-<dt id="gydelt.gydelt.ProcessData.clean_persons">
-<code class="descname">clean_persons</code><span class="sig-paren">(</span><em>fillna='unknown'</em>, <em>max_no_of_words=6</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_persons" title="Permalink to this definition">¶</a></dt>
-<dd><p>Filters out the <code class="docutils literal"><span class="pre">Persons</span></code> column of the data.</p>
-<p>Only those names are kept in which the no. of words are within a certain limit</p>
+<dt id="gydelt.gydelt.ProcessData.seperate_tones">
+<code class="descname">seperate_tones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.seperate_tones" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates Separate columns for each value in <code class="docutils literal"><span class="pre">ToneData</span></code></p>
 <dl class="docutils">
-<dt><strong>Parameters :</strong></dt>
-<dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
-<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
-<dt><code class="docutils literal"><span class="pre">max_no_of_words</span> <span class="pre">(int)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">6</span></code></dt>
-<dd>Removes all the names whose length is greater than this value from each record/row</dd>
-</dl>
-</dd>
 <dt><strong>Returns :</strong></dt>
-<dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
-<dd>A pandas DataFrame (with updated &#8216;Persons&#8217;)</dd>
+<dd><dl class="first docutils">
+<dt>pandas.DataFrame</dt>
+<dd>A pandas DataFrame</dd>
 </dl>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal"><span class="pre">ToneData</span></code> column has 7 vaules, which are converted into seperate columns in the data frame.
+The original <code class="docutils literal"><span class="pre">ToneData</span></code> remains intact</p>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -311,13 +440,13 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
-<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dt>pandas.DataFrame</dt>
 <dd>A pandas DataFrame (with Null values in <code class="docutils literal"><span class="pre">Themes</span></code> filled)</dd>
 </dl>
 </dd>
@@ -331,21 +460,20 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">fillna</span> <span class="pre">(str)</span> <span class="pre">:</span> <span class="pre">default</span> <span class="pre">'unknown'</span></code></dt>
-<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">default &#8216;unknown&#8217;</span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
-<dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
-<dd><p class="first">A pandas DataFrame</p>
+<dd><dl class="first docutils">
+<dt>pandas.DataFrame</dt>
+<dd>A pandas DataFrame</dd>
+</dl>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
 <p>All the column names passed in the list <code class="docutils literal"><span class="pre">columns</span></code> are flattened (one-hot encoding is used).</p>
 <p class="last">The new data frame returned contains additional columns, which are the individual and unique values present in the respective columns which are required to be flattened.</p>
 </div>
-</dd>
-</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -357,7 +485,7 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 <dl class="docutils">
 <dt><strong>Returns :</strong></dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
+<dt>pandas.DataFrame</dt>
 <dd>A clean and processed pandas DataFrame</dd>
 </dl>
 </dd>
@@ -365,20 +493,32 @@ If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&
 </dd></dl>
 
 <dl class="method">
-<dt id="gydelt.gydelt.ProcessData.seperate_tones">
-<code class="descname">seperate_tones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.seperate_tones" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates Separate columns for each value in <code class="docutils literal"><span class="pre">ToneData</span></code></p>
+<dt id="gydelt.gydelt.ProcessData.save_data_frame">
+<code class="descname">save_data_frame</code><span class="sig-paren">(</span><em>path=None</em>, <em>seperator='\t'</em>, <em>index=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.save_data_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a DataFrame (to a specified location/current working directory)</p>
 <dl class="docutils">
-<dt><strong>Returns :</strong></dt>
+<dt><strong>Parameters :</strong>        </dt>
 <dd><dl class="first last docutils">
-<dt><code class="docutils literal"><span class="pre">pandas.DataFrame</span></code></dt>
-<dd><p class="first">A pandas DataFrame</p>
+<dt>path (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd><p class="first">The path at which the file is to be stored</p>
+<p>It should be of the following format - <code class="docutils literal"><span class="pre">&lt;dir&gt;/&lt;sub-dir&gt;/.../&lt;filename.csv&gt;</span></code> (recommended)</p>
+<p>Mention the file name in the path itself (along with the extension)</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">ToneData</span></code> column has 7 vaules, which are converted into seperate columns in the data frame.
-The original <code class="docutils literal"><span class="pre">ToneData</span></code> remains intact</p>
+<p>If no path is provided, the data frame will be saved in the current working directory.</p>
+<p class="last">Format of file name - <code class="docutils literal"><span class="pre">Result(YYYY-MM-DD</span> <span class="pre">HH.MM.SS).csv</span></code></p>
 </div>
 </dd>
+<dt>separator (str)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span><dd>Delimiter to use</dd>
+<dt>index (boolean)</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>If True, then the index of the DataFrame will also be stored in the file</dd>
+</dl>
+</dd>
+<dt><strong>Returns :</strong></dt>
+<dd><dl class="first last docutils">
+<dt>None</dt>
+<dd>A success message, along with the full path of the file.</dd>
 </dl>
 </dd>
 </dl>
@@ -389,57 +529,73 @@ The original <code class="docutils literal"><span class="pre">ToneData</span></c
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">GetData</a></li>
-<li><a class="reference internal" href="#processdata">ProcessData</a></li>
-</ul>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="modules.html" class="btn btn-neutral" title="gydelt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="modules.html"
-                        title="previous chapter">gydelt</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/gydelt.rst.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Mrinal Jain.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="modules.html" title="gydelt"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">gydelt 1.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="modules.html" >gydelt</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2017, Mrinal Jain.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
-    </div>
-  </body>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>
