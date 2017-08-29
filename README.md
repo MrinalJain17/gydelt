@@ -31,6 +31,17 @@ Installation
 	```
 	pip install gydelt-1.0-py2.py3-none-any.whl
 	```
-> **Requirements**
+> **Requirements: **
 > You need Python (2.x or 3.x) to run gydelt (Python 3.x is recommended).
 > Also, if you want to query the data from Google's BigQuery, proper authentication will be required in order to do the job. 
+
+
+----------
+
+
+Tutorial
+------------
+
+A notebook that shows how to use the package and also, a sample use-case
+
+[Sample Notebook]()
