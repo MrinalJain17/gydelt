@@ -5,13 +5,14 @@ __version__ = '1.0'
 __author__ = 'Mrinal Jain'
 
 
+import os
+import string
+from time import time
+from datetime import datetime
 import pandas as pd
 import pandas_gbq as gbq
-import string
-import os
-from datetime import datetime
 from google.cloud import bigquery
-from time import time
+from . import country_state_list			# Contains the 'countries' and 'US_states' list required for pre-processing the data
 
 
 class GetData(object):
@@ -23,24 +24,25 @@ class GetData(object):
 		""" Read data from a saved file into a pandas DataFrame
 		
 		**Parameters :**
-			``path (str) :``
+			path (str) : ``(required)``
 				Path of the file to be read (**Do not forget** to add the file extension)
 
-			``separator (str) : default '\t'``
+			separator (str) : ``default '\\t'``
 				Delimiter to use
 
-			``parse_dates (list) : default False``
+			parse_dates (list) : ``default False``
 				eg - ['Date'] -> This column is parsed as a single Date column
 
-			``encoding (str) : default None``
-				Encoding to use for UTF when reading/writing (eg - 'ISO-8859-1')
+			encoding (str) : ``default None``
+				Encoding to use for UTF when reading/writing (eg - ``'ISO-8859-1'``)
 
-			``header (int) : default 0``
+			header (int) : ``default 0``
 				Determines what row in the data should be considered for the Heading (Column names)
+				
 				If no headers are needed, pass the value of 'header' as 'None' (without the quotes)
 
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A pandas DataFrame
 		"""
 	
@@ -60,39 +62,39 @@ class GetData(object):
 		""" Fire a query on Google's BigQuery according to your search criteria and get the data in a pandas DataFrame
 		
 		**Parameters :**
-			``project_id (str) : (required)``
+			project_id (str) : ``(required)``
 				The ID of the project created on Google BigQuery, with which the query is to be executed
 			
-			``fields_required (list) : default ['DATE', 'Themes', 'Locations', 'Persons', 'Organizations', 'V2Tone']``
+			fields_required (list) : ``default ['DATE', 'Themes', 'Locations', 'Persons', 'Organizations', 'V2Tone']``
 				The names of the columns to be extracted from the GKG Table on BigQuery
 					
-			``is_search_criteria (boolean) : default False``
+			is_search_criteria (boolean) : ``default False``
 				If True, then the user has to specify the Search Criteria (either through the console or by passing a dictionary)
 					
-			``get_stats (boolean) : default True``
+			get_stats (boolean) : ``default True``
 				If True, then the amount of data that is to be processed will be displayed before executing the query (only if the location of 'auth_file' is given)
 				
-			``auth_file (str) : default '' (empty)``
+			auth_file (str) : ``default '' (empty)``
 				The path of the authorization file received from BigQuery.
 					
 				.. note::
 					If the path of authorization file is provided, stats will be displayed before executing the query. If not, a message will be displayed and the user will be asked whether or not to proceeds
 					
-			``search_dict (dict) : default {} (empty)``	
+			search_dict (dict) : ``default {} (empty)``	
 				Contains the Search Criteria in the following format - 
 					Keys - Column from the GKG table, where the search is to be performed
 					Values - The keywords that are needed to be searched in the specific fields/columns
 
 				The values are divided into 3 parts - 
-					Part 1 - similar to 'Include ALL of' (boolean 'and' is applied for each keyword)
+					Part 1 - similar to ``'Include ALL of'`` (boolean ``'and'`` is applied for each keyword)
 					
-					Part 2 - similar to 'Include ATLEAST ONE of' (boolean 'or' is applied for each keyword)
+					Part 2 - similar to ``'Include ATLEAST ONE of'`` (boolean ``'or'`` is applied for each keyword)
 					
-					Part 3 - similar to 'Must NOT have ANY of' (boolean 'not' is applied for each keyword)
+					Part 3 - similar to ``'Must NOT have ANY of'`` (boolean ``'not'`` is applied for each keyword)
 						
-				Delimiter for the 3 parts is semi colon (;)
+				Delimiter for the 3 parts is semi colon
 
-				Delimiter for keywords within each part is comma (,)
+				Delimiter for keywords within each part is comma
 					
 				.. note:: If No keywords is to be added in a certain part, leave it empty (BUT, DO NOT miss the semicolons)
 				
@@ -101,10 +103,11 @@ class GetData(object):
 				>>> {'Locations': 'United States,China;;', 'Persons': ';;Donald Trump'}
 				# This would mean that the 'Locations' should have BOTH 'United States' and 'China' and 'Persons' should NOT have 'Donald Trump'
 					
-				.. note:: ``The format while taking the input via console is also the same.``
+				.. note:: The format while taking the input via console is also the same.
 
-					``First, enter the required fields/columns (delimited by semicolon(;))``
-					``Then, for each field, enter the Keywords in the same format as mentioned for the search_dict``
+					First, enter the required fields/columns (delimited by semi colon)
+					
+					Then, for each field, enter the Keywords in the same format as mentioned for the search_dict
 						
 				Example 
 
@@ -118,10 +121,10 @@ class GetData(object):
 				>>> Include ATLEAST ONE of these in Organizations: allen institute for artificial intelligence
 				>>> Include NONE of these in Organizations : 
 
-			.. note::	
-				If a dictionary is passed, it is **case-sensitive**. Therefore, give the values in the proper casing.
+				.. note::	
+					If a dictionary is passed, it is **case-sensitive**. Therefore, give the values in the proper casing.
 						
-			``limit (int) : default None``
+			limit (int) : ``default None``
 				The Maximum no. of rows to be returned from the result obtained by the Query.
 
 				.. note:: 	
@@ -129,11 +132,11 @@ class GetData(object):
 
 					If your query generates the data that exceeds 128 MB, you will need to specify the limit.	
 
-			``save_data (boolean) : default True``
+			save_data (boolean) : ``default True``
 				Will save the data in the current working directory
 				
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A pandas DataFrame	
 		"""
 
@@ -188,9 +191,10 @@ class GetData(object):
 		""" Save a DataFrame (to a specified location/current working directory)
 		
 		**Parameters :**
-			``data_frame (pandas.DataFrame) :``
-				The DataFrame that needs to be stored (in the specified format)	
-			``path (str) : default None``
+			data_frame (pandas.DataFrame) :
+				The DataFrame that needs to be stored (in the specified format)
+				
+			path (str) : ``default None``
 				The path at which the file is to be stored
 		   
 				It should be of the following format - ``<dir>/<sub-dir>/.../<filename.csv>`` (recommended)
@@ -200,15 +204,16 @@ class GetData(object):
 				.. note::
 					If no path is provided, the data frame will be saved in the current working directory.
 
-					Format of file name - '``Result(YYYY-MM-DD HH.MM.SS).csv``' (without quotes)
+					Format of file name - ``Result(YYYY-MM-DD HH.MM.SS).csv``
 			
-			``separator (str) : default '\t'``
+			separator (str) : ``default '\\t'``
 				Delimiter to use	
-			``index (boolean) : default False``
+				
+			index (boolean) : ``default False``
 				If True, then the index of the DataFrame will also be stored in the file
 
 		**Returns :**
-			``None``
+			None
 				A success message, along with the full path of the file.
 		"""
 
@@ -324,316 +329,27 @@ class ProcessData(object):
 	
 	""" Contains wrappers to pre-process various fields of the data collected from GDELT """
 	
-	countries = [
-		('US', 'United States'),
-		('AF', 'Afghanistan'),
-		('AL', 'Albania'),
-		('DZ', 'Algeria'),
-		('AS', 'American Samoa'),
-		('AD', 'Andorra'),
-		('AO', 'Angola'),
-		('AI', 'Anguilla'),
-		('AQ', 'Antarctica'),
-		('AG', 'Antigua And Barbuda'),
-		('AR', 'Argentina'),
-		('AM', 'Armenia'),
-		('AW', 'Aruba'),
-		('AU', 'Australia'),
-		('AT', 'Austria'),
-		('AZ', 'Azerbaijan'),
-		('BS', 'Bahamas'),
-		('BH', 'Bahrain'),
-		('BD', 'Bangladesh'),
-		('BB', 'Barbados'),
-		('BY', 'Belarus'),
-		('BE', 'Belgium'),
-		('BZ', 'Belize'),
-		('BJ', 'Benin'),
-		('BM', 'Bermuda'),
-		('BT', 'Bhutan'),
-		('BO', 'Bolivia'),
-		('BA', 'Bosnia And Herzegowina'),
-		('BW', 'Botswana'),
-		('BV', 'Bouvet Island'),
-		('BR', 'Brazil'),
-		('BN', 'Brunei Darussalam'),
-		('BG', 'Bulgaria'),
-		('BF', 'Burkina Faso'),
-		('BI', 'Burundi'),
-		('KH', 'Cambodia'),
-		('CM', 'Cameroon'),
-		('CA', 'Canada'),
-		('CV', 'Cape Verde'),
-		('KY', 'Cayman Islands'),
-		('CF', 'Central African Rep'),
-		('TD', 'Chad'),
-		('CL', 'Chile'),
-		('CN', 'China'),
-		('CX', 'Christmas Island'),
-		('CC', 'Cocos Islands'),
-		('CO', 'Colombia'),
-		('KM', 'Comoros'),
-		('CG', 'Congo'),
-		('CK', 'Cook Islands'),
-		('CR', 'Costa Rica'),
-		('CI', 'Cote D`ivoire'),
-		('HR', 'Croatia'),
-		('CU', 'Cuba'),
-		('CY', 'Cyprus'),
-		('CZ', 'Czech Republic'),
-		('DK', 'Denmark'),
-		('DJ', 'Djibouti'),
-		('DM', 'Dominica'),
-		('DO', 'Dominican Republic'),
-		('TP', 'East Timor'),
-		('EC', 'Ecuador'),
-		('EG', 'Egypt'),
-		('SV', 'El Salvador'),
-		('GQ', 'Equatorial Guinea'),
-		('ER', 'Eritrea'),
-		('EE', 'Estonia'),
-		('ET', 'Ethiopia'),
-		('FK', 'Falkland Islands (Malvinas)'),
-		('FO', 'Faroe Islands'),
-		('FJ', 'Fiji'),
-		('FI', 'Finland'),
-		('FR', 'France'),
-		('GF', 'French Guiana'),
-		('PF', 'French Polynesia'),
-		('TF', 'French S. Territories'),
-		('GA', 'Gabon'),
-		('GM', 'Gambia'),
-		('GE', 'Georgia'),
-		('DE', 'Germany'),
-		('GH', 'Ghana'),
-		('GI', 'Gibraltar'),
-		('GR', 'Greece'),
-		('GL', 'Greenland'),
-		('GD', 'Grenada'),
-		('GP', 'Guadeloupe'),
-		('GU', 'Guam'),
-		('GT', 'Guatemala'),
-		('GN', 'Guinea'),
-		('GW', 'Guinea-bissau'),
-		('GY', 'Guyana'),
-		('HT', 'Haiti'),
-		('HN', 'Honduras'),
-		('HK', 'Hong Kong'),
-		('HU', 'Hungary'),
-		('IS', 'Iceland'),
-		('IN', 'India'),
-		('ID', 'Indonesia'),
-		('IR', 'Iran'),
-		('IQ', 'Iraq'),
-		('EI', 'Ireland'),
-		('IL', 'Israel'),
-		('IT', 'Italy'),
-		('JM', 'Jamaica'),
-		('JP', 'Japan'),
-		('JO', 'Jordan'),
-		('KZ', 'Kazakhstan'),
-		('KE', 'Kenya'),
-		('KI', 'Kiribati'),
-		('KP', 'North Korea'),
-		('KR', 'South Korea'),
-		('KW', 'Kuwait'),
-		('KG', 'Kyrgyzstan'),
-		('LA', 'Laos'),
-		('LV', 'Latvia'),
-		('LB', 'Lebanon'),
-		('LS', 'Lesotho'),
-		('LR', 'Liberia'),
-		('LY', 'Libya'),
-		('LI', 'Liechtenstein'),
-		('LT', 'Lithuania'),
-		('LU', 'Luxembourg'),
-		('MO', 'Macau'),
-		('MK', 'Macedonia'),
-		('MG', 'Madagascar'),
-		('MW', 'Malawi'),
-		('MY', 'Malaysia'),
-		('MV', 'Maldives'),
-		('ML', 'Mali'),
-		('MT', 'Malta'),
-		('MH', 'Marshall Islands'),
-		('MQ', 'Martinique'),
-		('MR', 'Mauritania'),
-		('MU', 'Mauritius'),
-		('YT', 'Mayotte'),
-		('MX', 'Mexico'),
-		('FM', 'Micronesia'),
-		('MD', 'Moldova'),
-		('MC', 'Monaco'),
-		('MN', 'Mongolia'),
-		('MS', 'Montserrat'),
-		('MA', 'Morocco'),
-		('MZ', 'Mozambique'),
-		('MM', 'Myanmar'),
-		('NA', 'Namibia'),
-		('NR', 'Nauru'),
-		('NP', 'Nepal'),
-		('NL', 'Netherlands'),
-		('AN', 'Netherlands Antilles'),
-		('NC', 'New Caledonia'),
-		('NZ', 'New Zealand'),
-		('NI', 'Nicaragua'),
-		('NE', 'Niger'),
-		('NG', 'Nigeria'),
-		('NU', 'Niue'),
-		('NF', 'Norfolk Island'),
-		('MP', 'Northern Mariana Islands'),
-		('NO', 'Norway'),
-		('OM', 'Oman'),
-		('PK', 'Pakistan'),
-		('PW', 'Palau'),
-		('PA', 'Panama'),
-		('PG', 'Papua New Guinea'),
-		('PY', 'Paraguay'),
-		('PE', 'Peru'),
-		('PH', 'Philippines'),
-		('PN', 'Pitcairn'),
-		('PL', 'Poland'),
-		('PT', 'Portugal'),
-		('PR', 'Puerto Rico'),
-		('QA', 'Qatar'),
-		('RE', 'Reunion'),
-		('RO', 'Romania'),
-		('RS', 'Russia'),
-		('RW', 'Rwanda'),
-		('KN', 'Saint Kitts And Nevis'),
-		('LC', 'Saint Lucia'),
-		('VC', 'St Vincent/Grenadines'),
-		('WS', 'Samoa'),
-		('SM', 'San Marino'),
-		('ST', 'Sao Tome'),
-		('SA', 'Saudi Arabia'),
-		('SN', 'Senegal'),
-		('SC', 'Seychelles'),
-		('SL', 'Sierra Leone'),
-		('SG', 'Singapore'),
-		('SK', 'Slovakia'),
-		('SI', 'Slovenia'),
-		('SB', 'Solomon Islands'),
-		('SO', 'Somalia'),
-		('ZA', 'South Africa'),
-		('ES', 'Spain'),
-		('LK', 'Sri Lanka'),
-		('SH', 'St. Helena'),
-		('PM', 'St.Pierre'),
-		('SD', 'Sudan'),
-		('SR', 'Suriname'),
-		('SZ', 'Swaziland'),
-		('SE', 'Sweden'),
-		('CH', 'Switzerland'),
-		('SY', 'Syria'),
-		('TW', 'Taiwan'),
-		('TJ', 'Tajikistan'),
-		('TZ', 'Tanzania'),
-		('TH', 'Thailand'),
-		('TG', 'Togo'),
-		('TK', 'Tokelau'),
-		('TO', 'Tonga'),
-		('TT', 'Trinidad And Tobago'),
-		('TN', 'Tunisia'),
-		('TR', 'Turkey'),
-		('TM', 'Turkmenistan'),
-		('TV', 'Tuvalu'),
-		('UG', 'Uganda'),
-		('UA', 'Ukraine'),
-		('AE', 'United Arab Emirates'),
-		('UK', 'United Kingdom'),
-		('UY', 'Uruguay'),
-		('UZ', 'Uzbekistan'),
-		('VU', 'Vanuatu'),
-		('VA', 'Vatican City State'),
-		('VE', 'Venezuela'),
-		('VN', 'Vietnam'),
-		('VG', 'Virgin Islands (British)'),
-		('VI', 'Virgin Islands (U.S.)'),
-		('EH', 'Western Sahara'),
-		('YE', 'Yemen'),
-		('YU', 'Yugoslavia'),
-		('ZR', 'Zaire'),
-		('ZM', 'Zambia'),
-		('ZW', 'Zimbabwe')
-	]
-	
-	US_states = [
-		('AK', 'Alaska'),
-		('AL', 'Alabama'),
-		('AR', 'Arkansas'),
-		('AS', 'American Samoa'),
-		('AZ', 'Arizona'),
-		('CA', 'California'),
-		('CO', 'Colorado'),
-		('CT', 'Connecticut'),
-		('DC', 'District of Columbia'),
-		('DE', 'Delaware'),
-		('FL', 'Florida'),
-		('GA', 'Georgia'),
-		('GU', 'Guam'),
-		('HI', 'Hawaii'),
-		('IA', 'Iowa'),
-		('ID', 'Idaho'),
-		('IL', 'Illinois'),
-		('IN', 'Indiana'),
-		('KS', 'Kansas'),
-		('KY', 'Kentucky'),
-		('LA', 'Louisiana'),
-		('MA', 'Massachusetts'),
-		('MD', 'Maryland'),
-		('ME', 'Maine'),
-		('MI', 'Michigan'),
-		('MN', 'Minnesota'),
-		('MO', 'Missouri'),
-		('MP', 'Northern Mariana Islands'),
-		('MS', 'Mississippi'),
-		('MT', 'Montana'),
-		('NA', 'National'),
-		('NC', 'North Carolina'),
-		('ND', 'North Dakota'),
-		('NE', 'Nebraska'),
-		('NH', 'New Hampshire'),
-		('NJ', 'New Jersey'),
-		('NM', 'New Mexico'),
-		('NV', 'Nevada'),
-		('NY', 'New York'),
-		('OH', 'Ohio'),
-		('OK', 'Oklahoma'),
-		('OR', 'Oregon'),
-		('PA', 'Pennsylvania'),
-		('PR', 'Puerto Rico'),
-		('RI', 'Rhode Island'),
-		('SC', 'South Carolina'),
-		('SD', 'South Dakota'),
-		('TN', 'Tennessee'),
-		('TX', 'Texas'),
-		('UT', 'Utah'),
-		('VA', 'Virginia'),
-		('VI', 'Virgin Islands'),
-		('VT', 'Vermont'),
-		('WA', 'Washington'),
-		('WI', 'Wisconsin'),
-		('WV', 'West Virginia'),
-		('WY', 'Wyoming')
-	]
-	
 	def __init__(self, data_frame, location='Locations', person='Persons', organization='Organizations', tone='ToneData', theme='Themes'):
 		
 		""" Constructor of the class ``ProcessData``
 		
 		**Parameters :**
-			``data_frame (pandas.DataFrame) :``
-				The DataFrame obtained from GDELT, which is to be processed.
-			``location (str) : default 'Locations'``
+			data_frame (pandas.DataFrame) :
+				The DataFrame obtained from GDELT, which is to be processed
+				
+			location (str) : ``default 'Locations'``
 				The name of the field in the passed DataFrame that corresponds to ``Locations``
-			``person (str) : default 'Persons'``
+				
+			person (str) : ``default 'Persons'``
 				The name of the field in the passed DataFrame that corresponds to ``Persons``
-			``organization (str) : default 'Organizations'``
+				
+			organization (str) : ``default 'Organizations'``
 				The name of the field in the passed DataFrame that corresponds to ``Organizations``
-			``tone (str) : default 'ToneData'``
+				
+			tone (str) : ``default 'ToneData'``
 				The name of the field in the passed DataFrame that corresponds to ``ToneData``
-			``theme(str) : default 'Themes'``
+				
+			theme(str) : ``default 'Themes'``
 				The name of the field in the passed DataFrame that corresponds to ``Themes``	
 		"""
 		
@@ -649,7 +365,7 @@ class ProcessData(object):
 		""" Returns those Locations (countries) which were not present in the countries list
 
 		**Returns :**
-			``list``
+			list
 				A list containing the locations for which there was no match in the default country list
 		"""
 
@@ -658,7 +374,7 @@ class ProcessData(object):
 		for locations in self.data_frame[self.location]:
 			count = 0
 			location = locations.split(';')
-			for c in self.countries:
+			for c in country_state_list.countries:
 				for loc in location:
 					if (c[1] in loc):
 						count = 1
@@ -671,15 +387,16 @@ class ProcessData(object):
 		""" Pre-process the 'Locations' column of the data (Extract either all details available, or just the Countries)
 		
 		**Parameters :**
-			``only_country (boolean) : default True``
+			only_country (boolean) : ``default True``
 				If True, will keep only the country names for each row in the ``Locations`` column
 						
 				If False, will keep whatever details available (city, state or country)
-			``fillna (str) : default 'unknown'``
+				
+			fillna (str) : ``default 'unknown'``
 				To fill the Null values (``NaN``) with the specified value
 
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A pandas DataFrame (with additional fields for ``Countries`` and ``States``, if required)
 		"""
 
@@ -699,14 +416,15 @@ class ProcessData(object):
 		Only those names are kept in which the no. of words are within a certain limit
 				
 		**Parameters :**
-			``fillna (str) : default 'unknown'``
+			fillna (str) : ``default 'unknown'``
 				To fill the Null values (``NaN``) with the specified value
-			``max_no_of_words (int) : default 6``
+				
+			max_no_of_words (int) : ``default 6``
 				Removes all the names whose length is greater than this value from each record/row
 					
 		**Returns :**
-			``pandas.DataFrame``
-				A pandas DataFrame (with updated 'Persons')
+			pandas.DataFrame
+				A pandas DataFrame (with updated ``'Persons'``)
 		"""
 
 		self.data_frame[self.person].fillna(fillna, inplace=True)
@@ -723,11 +441,11 @@ class ProcessData(object):
 			This function removes those Organizations (which are actually Countries), from each record/row
 		
 		**Parameters :**
-			``fillna (str) : default 'unknown'``
+			fillna (str) : ``default 'unknown'``
 				To fill the Null values (``NaN``) with the specified value
 			
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A pandas DataFrame (with updated ``Organizations``)
 		"""
 
@@ -741,12 +459,12 @@ class ProcessData(object):
 		""" Creates Separate columns for each value in ``ToneData``
 		
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A pandas DataFrame
 						
-				.. note::
-					The ``ToneData`` column has 7 vaules, which are converted into seperate columns in the data frame.
-					The original ``ToneData`` remains intact
+			.. note::
+				The ``ToneData`` column has 7 vaules, which are converted into seperate columns in the data frame.
+				The original ``ToneData`` remains intact
 		"""
 		
 		seperate = ['Tone', 'Positive Score', 'Negative Score', 'Polarity', 'Activity Reference Density', 'Self/Group Reference Density', 'Word Count']
@@ -762,11 +480,11 @@ class ProcessData(object):
 		""" Fills the Null values (``NaN``) in the ``Themes`` column of data
 		
 		**Parameters :**
-			``fillna (str) : default 'unknown'``
+			fillna (str) : ``default 'unknown'``
 				To fill the Null values (``NaN``) with the specified value
 			
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A pandas DataFrame (with Null values in ``Themes`` filled)
 		"""
 		
@@ -778,17 +496,17 @@ class ProcessData(object):
 		""" The given list of columns are flattened (using one-hot encoding) and the resulting columns are added to the DataFrame
 		
 		**Parameters :**
-			``fillna (str) : default 'unknown'``
+			fillna (str) : default 'unknown'
 				To fill the Null values (``NaN``) with the specified value
 					
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A pandas DataFrame
 				
-				.. note::
-					All the column names passed in the list ``columns`` are flattened (one-hot encoding is used).
+			.. note::
+				All the column names passed in the list ``columns`` are flattened (one-hot encoding is used).
 
-					The new data frame returned contains additional columns, which are the individual and unique values present in the respective columns which are required to be flattened.
+				The new data frame returned contains additional columns, which are the individual and unique values present in the respective columns which are required to be flattened.
 		"""
 		
 		start_time = time()
@@ -821,7 +539,7 @@ class ProcessData(object):
 		""" A wrapper functions that does all the pre-processig. (Except - flattening)
 			
 		**Returns :**
-			``pandas.DataFrame``
+			pandas.DataFrame
 				A clean and processed pandas DataFrame
 		"""
 		
@@ -843,6 +561,39 @@ class ProcessData(object):
 		print('\nTime taken for pre-processing the data --> {:.2f} seconds'.format(end_time - start_time))
 		
 		return self.data_frame
+		
+	def save_data_frame(self, path=None, seperator='\t', index=False):
+
+		""" Save a DataFrame (to a specified location/current working directory)
+		
+		**Parameters :**	
+			path (str) : ``default None``
+				The path at which the file is to be stored
+		   
+				It should be of the following format - ``<dir>/<sub-dir>/.../<filename.csv>`` (recommended)
+
+				Mention the file name in the path itself (along with the extension)
+
+				.. note::
+					If no path is provided, the data frame will be saved in the current working directory.
+
+					Format of file name - ``Result(YYYY-MM-DD HH.MM.SS).csv``
+			
+			separator (str) : ``default '\\t'``
+				Delimiter to use	
+				
+			index (boolean) : ``default False``
+				If True, then the index of the DataFrame will also be stored in the file
+
+		**Returns :**
+			None
+				A success message, along with the full path of the file.
+		"""
+
+		if path == None:
+			path = os.getcwd() + (r'\Result({}).csv'.format(datetime.now().strftime('%Y-%m-%d %H.%M.%S')))
+		self.data_frame.to_csv(path, sep=seperator, index=index)
+		print('Success: Data frame saved as - {}'.format(path))
 		
 	def _process_persons(self, row, max_words):
 
@@ -870,7 +621,7 @@ class ProcessData(object):
 
 		temp = row.split(';')
 		cleanList = []
-		for c in self.countries:
+		for c in country_state_list.countries:
 			for t in temp:
 				if (c[1] in t):
 					cleanList.append(c[1])               # This will only extract the Country name
@@ -889,7 +640,7 @@ class ProcessData(object):
 		stateList = []
 		for t in temp:
 			if 'United States' in t:
-				for state in self.US_states:
+				for state in country_state_list.US_states:
 					if state[1] in t:
 						stateList.append(state[1])
 		if len(stateList) == 0:
@@ -907,7 +658,7 @@ class ProcessData(object):
 
 		organizations = row.split(';')
 		organizations = [org.lower() for org in organizations]
-		for country in self.countries:
+		for country in country_state_list.countries:
 			if country[1].lower() in organizations:
 				organizations.remove(country[1].lower())
 		return ';'.join(organizations)

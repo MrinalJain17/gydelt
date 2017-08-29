@@ -1,8 +1,8 @@
 Welcome to gydelt
 ===============
-It's pretty complicated to get data from GDELT. Not only accessing the data but preprocessing the data is also a tedious task. **'gydelt'**  is a wrapper that can be used to access and perform the basic preprocessing operations on the data obtained from GDELT.
+It's pretty complicated to get data from [GDELT](https://www.gdeltproject.org/). Not only accessing the data but preprocessing the data is also a tedious task. **'gydelt'**  is a wrapper that can be used to access and perform the basic preprocessing operations on the data obtained from GDELT. It has several datasets. This package is particularly for the **Global Knowledge Graph (GKG)**
 
-[View Full Documentation of gydelt](http://gydelt.readthedocs.io/en/latest/)
+[View full Documentation](http://gydelt.readthedocs.io/en/latest/)
 
 
 ----------
@@ -31,6 +31,18 @@ Installation
 	```
 	pip install gydelt-1.0-py2.py3-none-any.whl
 	```
-> **Requirements**
+> **Requirement :**
+> 
 > You need Python (2.x or 3.x) to run gydelt (Python 3.x is recommended).
 > Also, if you want to query the data from Google's BigQuery, proper authentication will be required in order to do the job. 
+
+
+----------
+
+
+Tutorial
+------------
+
+A notebook that shows how to use the package and also, a sample use-case
+
+[Sample Notebook]()
