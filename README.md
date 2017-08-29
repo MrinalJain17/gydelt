@@ -45,4 +45,4 @@ Tutorial
 
 A notebook that shows how to use the package and also, a sample use-case
 
-[Sample Notebook]()
+[Sample Notebook](http://nbviewer.jupyter.org/github/MrinalJain17/gydelt/blob/master/tutorial/Example.ipynb)
