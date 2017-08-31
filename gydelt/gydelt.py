@@ -178,7 +178,7 @@ class GetData(object):
 					data_frame['Date'] = data_frame['Date'].apply(lambda x: x[:8])
 					data_frame['Date'] = pd.to_datetime(data_frame['Date'], format='%Y%m%d')
 				if save_data:
-					save_data_frame(data_frame=data_frame)
+					self.save_data_frame(data_frame=data_frame)
 				return data_frame
 			except gbq.gbq.GenericGBQException:
 				print('\nGenericGBQException: Quota exceeded - Your project exceeded quota for free query bytes scanned.\n')
