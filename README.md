@@ -2,7 +2,7 @@ Welcome to gydelt
 ===============
 It's pretty complicated to get data from [GDELT](https://www.gdeltproject.org/). Not only accessing the data but preprocessing the data is also a tedious task. **'gydelt'**  is a wrapper that can be used to access and perform the basic preprocessing operations on the data obtained from GDELT. It has several datasets. This package is particularly for the **Global Knowledge Graph (GKG)**
 
-[View full Documentation](http://gydelt.readthedocs.io/en/latest/)
+[Read the Documentation](http://gydelt.readthedocs.io/en/latest/)
 
 
 ----------
