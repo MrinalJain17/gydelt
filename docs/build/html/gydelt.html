@@ -164,26 +164,26 @@
 <h1>GetData<a class="headerlink" href="#getdata" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gydelt.gydelt.GetData">
-<em class="property">class </em><code class="descclassname">gydelt.gydelt.</code><code class="descname">GetData</code><a class="headerlink" href="#gydelt.gydelt.GetData" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gydelt.gydelt.</code><code class="descname">GetData</code><a class="reference internal" href="_modules/gydelt/gydelt.html#GetData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.GetData" title="Permalink to this definition">¶</a></dt>
 <dd><p>For collecting and storing the data</p>
 <dl class="method">
 <dt id="gydelt.gydelt.GetData.read_from_file">
-<code class="descname">read_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>seperator='\t'</em>, <em>parse_dates=False</em>, <em>encoding=None</em>, <em>header=0</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.GetData.read_from_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>seperator='\t'</em>, <em>parse_dates=False</em>, <em>encoding=None</em>, <em>header=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#GetData.read_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.GetData.read_from_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read data from a saved file into a pandas DataFrame</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>path (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">(required)</span></code></span><dd>Path of the file to be read (<strong>Do not forget</strong> to add the file extension)</dd>
-<dt>separator (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span><dd>Delimiter to use</dd>
-<dt>parse_dates (list)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>eg - [&#8216;Date&#8217;] -&gt; This column is parsed as a single Date column</dd>
-<dt>encoding (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd>Encoding to use for UTF when reading/writing (eg - <code class="docutils literal"><span class="pre">'ISO-8859-1'</span></code>)</dd>
-<dt>header (int)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">0</span></code></span><dd><p class="first">Determines what row in the data should be considered for the Heading (Column names)</p>
-<p class="last">If no headers are needed, pass the value of &#8216;header&#8217; as &#8216;None&#8217; (without the quotes)</p>
+<dt>path (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">(required)</span></code></span></dt>
+<dd>Path of the file to be read (<strong>Do not forget</strong> to add the file extension)</dd>
+<dt>separator (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span></dt>
+<dd>Delimiter to use</dd>
+<dt>parse_dates (list) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span></dt>
+<dd>eg - [‘Date’] -&gt; This column is parsed as a single Date column</dd>
+<dt>encoding (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span></dt>
+<dd>Encoding to use for UTF when reading/writing (eg - <code class="docutils literal"><span class="pre">'ISO-8859-1'</span></code>)</dd>
+<dt>header (int) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">0</span></code></span></dt>
+<dd><p class="first">Determines what row in the data should be considered for the Heading (Column names)</p>
+<p class="last">If no headers are needed, pass the value of ‘header’ as ‘None’ (without the quotes)</p>
 </dd>
 </dl>
 </dd>
@@ -198,32 +198,32 @@
 
 <dl class="method">
 <dt id="gydelt.gydelt.GetData.fire_query">
-<code class="descname">fire_query</code><span class="sig-paren">(</span><em>project_id, fields_required=['DATE', 'Themes', 'Locations', 'Persons', 'Organizations', 'V2Tone'], is_search_criteria=False, get_stats=True, auth_file='', search_dict={}, limit=None, save_data=True</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.GetData.fire_query" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fire a query on Google&#8217;s BigQuery according to your search criteria and get the data in a pandas DataFrame</p>
+<code class="descname">fire_query</code><span class="sig-paren">(</span><em>project_id, fields_required=['DATE', 'Themes', 'Locations', 'Persons', 'Organizations', 'V2Tone'], is_search_criteria=False, get_stats=True, auth_file='', search_dict={}, limit=None, save_data=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#GetData.fire_query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.GetData.fire_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fire a query on Google’s BigQuery according to your search criteria and get the data in a pandas DataFrame</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>project_id (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">(required)</span></code></span><dd>The ID of the project created on Google BigQuery, with which the query is to be executed</dd>
-<dt>fields_required (list)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">['DATE',</span> <span class="pre">'Themes',</span> <span class="pre">'Locations',</span> <span class="pre">'Persons',</span> <span class="pre">'Organizations',</span> <span class="pre">'V2Tone']</span></code></span><dd>The names of the columns to be extracted from the GKG Table on BigQuery</dd>
-<dt>is_search_criteria (boolean)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>If True, then the user has to specify the Search Criteria (either through the console or by passing a dictionary)</dd>
-<dt>get_stats (boolean)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span><dd>If True, then the amount of data that is to be processed will be displayed before executing the query (only if the location of &#8216;auth_file&#8217; is given)</dd>
-<dt>auth_file (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">''</span> <span class="pre">(empty)</span></code></span><dd><p class="first">The path of the authorization file received from BigQuery.</p>
+<dt>project_id (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">(required)</span></code></span></dt>
+<dd>The ID of the project created on Google BigQuery, with which the query is to be executed</dd>
+<dt>fields_required (list) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">['DATE',</span> <span class="pre">'Themes',</span> <span class="pre">'Locations',</span> <span class="pre">'Persons',</span> <span class="pre">'Organizations',</span> <span class="pre">'V2Tone']</span></code></span></dt>
+<dd>The names of the columns to be extracted from the GKG Table on BigQuery</dd>
+<dt>is_search_criteria (boolean) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span></dt>
+<dd>If True, then the user has to specify the Search Criteria (either through the console or by passing a dictionary)</dd>
+<dt>get_stats (boolean) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span></dt>
+<dd>If True, then the amount of data that is to be processed will be displayed before executing the query (only if the location of ‘auth_file’ is given)</dd>
+<dt>auth_file (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">''</span> <span class="pre">(empty)</span></code></span></dt>
+<dd><p class="first">The path of the authorization file received from BigQuery.</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If the path of authorization file is provided, stats will be displayed before executing the query. If not, a message will be displayed and the user will be asked whether or not to proceeds</p>
 </div>
 </dd>
-<dt>search_dict (dict)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">{}</span> <span class="pre">(empty)</span></code>     </span><dd><dl class="first docutils">
-<dt>Contains the Search Criteria in the following format - </dt>
+<dt>search_dict (dict) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">{}</span> <span class="pre">(empty)</span></code></span></dt>
+<dd><dl class="first docutils">
+<dt>Contains the Search Criteria in the following format -</dt>
 <dd>Keys - Column from the GKG table, where the search is to be performed
 Values - The keywords that are needed to be searched in the specific fields/columns</dd>
-<dt>The values are divided into 3 parts - </dt>
+<dt>The values are divided into 3 parts -</dt>
 <dd><p class="first">Part 1 - similar to <code class="docutils literal"><span class="pre">'Include</span> <span class="pre">ALL</span> <span class="pre">of'</span></code> (boolean <code class="docutils literal"><span class="pre">'and'</span></code> is applied for each keyword)</p>
 <p>Part 2 - similar to <code class="docutils literal"><span class="pre">'Include</span> <span class="pre">ATLEAST</span> <span class="pre">ONE</span> <span class="pre">of'</span></code> (boolean <code class="docutils literal"><span class="pre">'or'</span></code> is applied for each keyword)</p>
 <p class="last">Part 3 - similar to <code class="docutils literal"><span class="pre">'Must</span> <span class="pre">NOT</span> <span class="pre">have</span> <span class="pre">ANY</span> <span class="pre">of'</span></code> (boolean <code class="docutils literal"><span class="pre">'not'</span></code> is applied for each keyword)</p>
@@ -257,7 +257,7 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">ALL</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span><span class="p">:</span> <span class="n">google</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">ATLEAST</span> <span class="n">ONE</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span><span class="p">:</span> <span class="n">allen</span> <span class="n">institute</span> <span class="k">for</span> <span class="n">artificial</span> <span class="n">intelligence</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">NONE</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span> <span class="p">:</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Include</span> <span class="n">NONE</span> <span class="n">of</span> <span class="n">these</span> <span class="ow">in</span> <span class="n">Organizations</span> <span class="p">:</span>
 </pre></div>
 </div>
 <div class="last admonition note">
@@ -265,16 +265,16 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 <p class="last">If a dictionary is passed, it is <strong>case-sensitive</strong>. Therefore, give the values in the proper casing.</p>
 </div>
 </dd>
-<dt>limit (int)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd><p class="first">The Maximum no. of rows to be returned from the result obtained by the Query.</p>
+<dt>limit (int) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span></dt>
+<dd><p class="first">The Maximum no. of rows to be returned from the result obtained by the Query.</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
 <p>The max. size of the result is 128 MB.</p>
 <p class="last">If your query generates the data that exceeds 128 MB, you will need to specify the limit.</p>
 </div>
 </dd>
-<dt>save_data (boolean)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span><dd>Will save the data in the current working directory</dd>
+<dt>save_data (boolean) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span></dt>
+<dd>Will save the data in the current working directory</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
@@ -288,15 +288,15 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 
 <dl class="method">
 <dt id="gydelt.gydelt.GetData.save_data_frame">
-<code class="descname">save_data_frame</code><span class="sig-paren">(</span><em>data_frame</em>, <em>path=None</em>, <em>seperator='\t'</em>, <em>index=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.GetData.save_data_frame" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_data_frame</code><span class="sig-paren">(</span><em>data_frame</em>, <em>path=None</em>, <em>seperator='\t'</em>, <em>index=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#GetData.save_data_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.GetData.save_data_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a DataFrame (to a specified location/current working directory)</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
 <dt>data_frame (pandas.DataFrame) :</dt>
 <dd>The DataFrame that needs to be stored (in the specified format)</dd>
-<dt>path (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd><p class="first">The path at which the file is to be stored</p>
+<dt>path (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span></dt>
+<dd><p class="first">The path at which the file is to be stored</p>
 <p>It should be of the following format - <code class="docutils literal"><span class="pre">&lt;dir&gt;/&lt;sub-dir&gt;/.../&lt;filename.csv&gt;</span></code> (recommended)</p>
 <p>Mention the file name in the path itself (along with the extension)</p>
 <div class="last admonition note">
@@ -305,10 +305,10 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 <p class="last">Format of file name - <code class="docutils literal"><span class="pre">Result(YYYY-MM-DD</span> <span class="pre">HH.MM.SS).csv</span></code></p>
 </div>
 </dd>
-<dt>separator (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span><dd>Delimiter to use</dd>
-<dt>index (boolean)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>If True, then the index of the DataFrame will also be stored in the file</dd>
+<dt>separator (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span></dt>
+<dd>Delimiter to use</dd>
+<dt>index (boolean) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span></dt>
+<dd>If True, then the index of the DataFrame will also be stored in the file</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
@@ -327,11 +327,11 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 <h1>ProcessData<a class="headerlink" href="#processdata" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="gydelt.gydelt.ProcessData">
-<em class="property">class </em><code class="descclassname">gydelt.gydelt.</code><code class="descname">ProcessData</code><span class="sig-paren">(</span><em>data_frame</em>, <em>location='Locations'</em>, <em>person='Persons'</em>, <em>organization='Organizations'</em>, <em>tone='ToneData'</em>, <em>theme='Themes'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">gydelt.gydelt.</code><code class="descname">ProcessData</code><span class="sig-paren">(</span><em>data_frame</em>, <em>location='Locations'</em>, <em>person='Persons'</em>, <em>organization='Organizations'</em>, <em>tone='ToneData'</em>, <em>theme='Themes'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contains wrappers to pre-process various fields of the data collected from GDELT</p>
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.check_country_list">
-<code class="descname">check_country_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.check_country_list" title="Permalink to this definition">¶</a></dt>
+<code class="descname">check_country_list</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.check_country_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.check_country_list" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns those Locations (countries) which were not present in the countries list</p>
 <dl class="docutils">
 <dt><strong>Returns :</strong></dt>
@@ -345,17 +345,17 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.clean_locations">
-<code class="descname">clean_locations</code><span class="sig-paren">(</span><em>only_country=True</em>, <em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_locations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Pre-process the &#8216;Locations&#8217; column of the data (Extract either all details available, or just the Countries)</p>
+<code class="descname">clean_locations</code><span class="sig-paren">(</span><em>only_country=True</em>, <em>fillna='unknown'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.clean_locations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_locations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pre-process the ‘Locations’ column of the data (Extract either all details available, or just the Countries)</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>only_country (boolean)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span><dd><p class="first">If True, will keep only the country names for each row in the <code class="docutils literal"><span class="pre">Locations</span></code> column</p>
+<dt>only_country (boolean) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">True</span></code></span></dt>
+<dd><p class="first">If True, will keep only the country names for each row in the <code class="docutils literal"><span class="pre">Locations</span></code> column</p>
 <p class="last">If False, will keep whatever details available (city, state or country)</p>
 </dd>
-<dt>fillna (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
@@ -369,16 +369,16 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.clean_persons">
-<code class="descname">clean_persons</code><span class="sig-paren">(</span><em>fillna='unknown'</em>, <em>max_no_of_words=6</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_persons" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clean_persons</code><span class="sig-paren">(</span><em>fillna='unknown'</em>, <em>max_no_of_words=6</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.clean_persons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_persons" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filters out the <code class="docutils literal"><span class="pre">Persons</span></code> column of the data.</p>
 <p>Only those names are kept in which the no. of words are within a certain limit</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>fillna (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
-<dt>max_no_of_words (int)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">6</span></code></span><dd>Removes all the names whose length is greater than this value from each record/row</dd>
+<dt>fillna (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>max_no_of_words (int) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">6</span></code></span></dt>
+<dd>Removes all the names whose length is greater than this value from each record/row</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
@@ -392,7 +392,7 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.clean_organizations">
-<code class="descname">clean_organizations</code><span class="sig-paren">(</span><em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_organizations" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clean_organizations</code><span class="sig-paren">(</span><em>fillna='unknown'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.clean_organizations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_organizations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pre-processes the <code class="docutils literal"><span class="pre">Organizations</span></code> column. Removes certain invalid Organizations</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -402,8 +402,8 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>fillna (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
@@ -417,7 +417,7 @@ Values - The keywords that are needed to be searched in the specific fields/colu
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.seperate_tones">
-<code class="descname">seperate_tones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.seperate_tones" title="Permalink to this definition">¶</a></dt>
+<code class="descname">seperate_tones</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.seperate_tones"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.seperate_tones" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates Separate columns for each value in <code class="docutils literal"><span class="pre">ToneData</span></code></p>
 <dl class="docutils">
 <dt><strong>Returns :</strong></dt>
@@ -436,13 +436,13 @@ The original <code class="docutils literal"><span class="pre">ToneData</span></c
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.clean_themes">
-<code class="descname">clean_themes</code><span class="sig-paren">(</span><em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_themes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">clean_themes</code><span class="sig-paren">(</span><em>fillna='unknown'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.clean_themes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.clean_themes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fills the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) in the <code class="docutils literal"><span class="pre">Themes</span></code> column of data</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>fillna (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'unknown'</span></code></span></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
@@ -456,13 +456,13 @@ The original <code class="docutils literal"><span class="pre">ToneData</span></c
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.flat_column">
-<code class="descname">flat_column</code><span class="sig-paren">(</span><em>columns=[]</em>, <em>fillna='unknown'</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.flat_column" title="Permalink to this definition">¶</a></dt>
+<code class="descname">flat_column</code><span class="sig-paren">(</span><em>columns=[]</em>, <em>fillna='unknown'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.flat_column"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.flat_column" title="Permalink to this definition">¶</a></dt>
 <dd><p>The given list of columns are flattened (using one-hot encoding) and the resulting columns are added to the DataFrame</p>
 <dl class="docutils">
 <dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>fillna (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">default &#8216;unknown&#8217;</span><dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
+<dt>fillna (str) <span class="classifier-delimiter">:</span> <span class="classifier">default ‘unknown’</span></dt>
+<dd>To fill the Null values (<code class="docutils literal"><span class="pre">NaN</span></code>) with the specified value</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
@@ -481,7 +481,7 @@ The original <code class="docutils literal"><span class="pre">ToneData</span></c
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.pre_process">
-<code class="descname">pre_process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.pre_process" title="Permalink to this definition">¶</a></dt>
+<code class="descname">pre_process</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.pre_process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.pre_process" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper functions that does all the pre-processig. (Except - flattening)</p>
 <dl class="docutils">
 <dt><strong>Returns :</strong></dt>
@@ -495,13 +495,13 @@ The original <code class="docutils literal"><span class="pre">ToneData</span></c
 
 <dl class="method">
 <dt id="gydelt.gydelt.ProcessData.save_data_frame">
-<code class="descname">save_data_frame</code><span class="sig-paren">(</span><em>path=None</em>, <em>seperator='\t'</em>, <em>index=False</em><span class="sig-paren">)</span><a class="headerlink" href="#gydelt.gydelt.ProcessData.save_data_frame" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_data_frame</code><span class="sig-paren">(</span><em>path=None</em>, <em>seperator='\t'</em>, <em>index=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gydelt/gydelt.html#ProcessData.save_data_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gydelt.gydelt.ProcessData.save_data_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a DataFrame (to a specified location/current working directory)</p>
 <dl class="docutils">
-<dt><strong>Parameters :</strong>        </dt>
+<dt><strong>Parameters :</strong></dt>
 <dd><dl class="first last docutils">
-<dt>path (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span><dd><p class="first">The path at which the file is to be stored</p>
+<dt>path (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">None</span></code></span></dt>
+<dd><p class="first">The path at which the file is to be stored</p>
 <p>It should be of the following format - <code class="docutils literal"><span class="pre">&lt;dir&gt;/&lt;sub-dir&gt;/.../&lt;filename.csv&gt;</span></code> (recommended)</p>
 <p>Mention the file name in the path itself (along with the extension)</p>
 <div class="last admonition note">
@@ -510,10 +510,10 @@ The original <code class="docutils literal"><span class="pre">ToneData</span></c
 <p class="last">Format of file name - <code class="docutils literal"><span class="pre">Result(YYYY-MM-DD</span> <span class="pre">HH.MM.SS).csv</span></code></p>
 </div>
 </dd>
-<dt>separator (str)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span><dd>Delimiter to use</dd>
-<dt>index (boolean)</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span><dd>If True, then the index of the DataFrame will also be stored in the file</dd>
+<dt>separator (str) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">'\t'</span></code></span></dt>
+<dd>Delimiter to use</dd>
+<dt>index (boolean) <span class="classifier-delimiter">:</span> <span class="classifier"><code class="docutils literal"><span class="pre">default</span> <span class="pre">False</span></code></span></dt>
+<dd>If True, then the index of the DataFrame will also be stored in the file</dd>
 </dl>
 </dd>
 <dt><strong>Returns :</strong></dt>
